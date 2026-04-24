@@ -151,7 +151,14 @@
   .bnav .item{
     display:flex;flex-direction:column;align-items:center;gap:3px;
     color:var(--cream-60);position:relative;padding-top:6px;
+    cursor:pointer;user-select:none;
+    transition:color .12s ease, transform .08s ease;
+    -webkit-tap-highlight-color:transparent;
   }
+  .bnav .item:hover{color:var(--cream)}
+  .bnav .item:active{transform:scale(.94)}
+  .bnav .item.active,
+  .bnav .item.active:hover{color:var(--orange)}
   .bnav .item.active{color:var(--orange)}
   .bnav .item.active::before{
     content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
@@ -5042,15 +5049,34 @@
   })();
 
   // ========================= TAB SWITCHING =========================
+  function switchToTab(targetId){
+    const btn = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
+    if (!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+    btn.classList.add('on');
+    document.getElementById(targetId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Keep the active tab button visible in the horizontal tab bar
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
-      document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
-      btn.classList.add('on');
-      document.getElementById(target).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    btn.addEventListener('click', () => switchToTab(btn.dataset.target));
+  });
+
+  // ========================= CLICKABLE BOTTOM NAV =========================
+  // Tapping an icon inside any phone's bottom nav jumps to the matching top-level tab.
+  // Uses event delegation because the navs are injected via string replace (live listeners would be lost).
+  const BNAV_TARGETS = ['sec-home', 'sec-shop', 'sec-advisory', 'sec-sell', 'sec-profile'];
+  document.addEventListener('click', (e) => {
+    const item = e.target.closest('.bnav .item');
+    if (!item) return;
+    const nav = item.parentElement;
+    const idx = Array.from(nav.children).indexOf(item);
+    const target = BNAV_TARGETS[idx];
+    if (!target) return;
+    e.preventDefault();
+    switchToTab(target);
   });
 
   // ========================= PDF DOWNLOAD =========================
