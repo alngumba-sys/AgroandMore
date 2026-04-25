@@ -263,6 +263,17 @@
   .carousel .dots .d.on{background:var(--orange);opacity:1;width:22px;border-radius:3px}
   .carousel .nav{display:flex;justify-content:space-between;align-items:center;padding:0 22px 20px;gap:12px}
   .carousel .skip{color:var(--teal);font-size:13px;font-weight:600;padding:10px 4px}
+  /* Combined onboarding slide — three feature blurbs stacked */
+  .feat-list{display:flex;flex-direction:column;gap:10px;margin:6px 0 10px}
+  .feat-row{display:flex;gap:10px;align-items:center;padding:6px 0}
+  .feat-row .fi{
+    width:36px;height:36px;border-radius:10px;background:var(--cream);color:var(--teal);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;
+  }
+  .feat-row .fi.orange{background:var(--orange);color:#fff}
+  .feat-row .fi.rust{background:var(--rust);color:#fff}
+  .feat-row .ft{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.3}
+  .feat-row .ft strong{color:var(--ink);font-weight:800}
   .carousel .next{background:var(--orange);color:#fff;height:44px;padding:0 24px;border:none;border-radius:24px;font-weight:700;font-size:13px;font-family:inherit;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
 
   /* ========================= ROLE SELECTION ========================= */
@@ -1279,8 +1290,9 @@
   /* Visa card preview */
   .visa-card{
     background:linear-gradient(135deg, #1A1F71 0%, #0A1454 100%);color:#fff;
-    border-radius:14px;padding:16px;margin-bottom:12px;position:relative;overflow:hidden;
-    aspect-ratio:1.586;max-height:150px;
+    border-radius:14px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden;
+    width:100%;aspect-ratio:1.586;
+    box-shadow:0 12px 24px -8px rgba(10,20,84,.45);
   }
   .visa-card::after{
     content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;
@@ -1738,7 +1750,7 @@
   <button class="tab-btn" data-target="sec-profile">Profile Tab <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-agent">Agent · My Business <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-agent-flows">Agent Flows <span class="count">8</span></button>
-  <button class="tab-btn" data-target="sec-fo">Field Officer <span class="count">8</span></button>
+  <button class="tab-btn" data-target="sec-fo">Field Officer <span class="count">9</span></button>
   <button class="tab-btn" data-target="sec-diaspora">Diaspora <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-errors">Shared Errors <span class="count">16</span></button>
 </nav>
@@ -1775,70 +1787,42 @@
       <div class="screen-caption">SVG reproduction of the agmore · kisoboka logo on cream. Holds 1.2s before the carousel.</div>
     </div>
 
-    <!-- 2-4. Onboarding slides -->
+    <!-- 2. Combined onboarding slide -->
     <div>
-      <div class="screen-label"><span class="num">02</span>Onboarding · Slide 1</div>
-      <div class="phone"><div class="screen">
-        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
-        <div class="carousel">
-          <div class="illus slide-1">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1000&q=80" alt="Agro inputs" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.classList.add('failed')">
-            <div class="caption-tag">Seeds &amp; inputs at a Ugandan agro-dealer</div>
-          </div>
-          <div class="body">
-            <h2>Buy seeds, fertilizer &amp; tools — straight from your phone.</h2>
-            <p>Shop from Agro and More's 8 outlets across Uganda. Pay with mobile money or pick up at Mpigi, Masaka, Gulu and more.</p>
-            <div class="dots"><span class="d on"></span><span class="d"></span><span class="d"></span></div>
-          </div>
-          <div class="nav"><div class="skip">Skip</div><button class="next">Next ›</button></div>
-        </div>
-      </div></div>
-      <div class="screen-caption">3-slide carousel · orange pill indicates progress.</div>
-    </div>
-
-    <div>
-      <div class="screen-label"><span class="num">03</span>Onboarding · Slide 2</div>
-      <div class="phone"><div class="screen">
-        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
-        <div class="carousel">
-          <div class="illus slide-2">
-            <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=1000&q=80" alt="Farmer on phone" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.classList.add('failed')">
-            <div class="caption-tag">Farmer calling a Field Officer · Butambala</div>
-          </div>
-          <div class="body">
-            <h2>Call a qualified agronomist — in English or Luganda.</h2>
-            <p>Connect with Field Officers across Mpigi, Butambala, Gomba and Karamoja. Ratings shown. Call charge is standard.</p>
-            <div class="dots"><span class="d"></span><span class="d on"></span><span class="d"></span></div>
-          </div>
-          <div class="nav"><div class="skip">Skip</div><button class="next">Next ›</button></div>
-        </div>
-      </div></div>
-      <div class="screen-caption">Slide 2 · teal-toned hero.</div>
-    </div>
-
-    <div>
-      <div class="screen-label"><span class="num">04</span>Onboarding · Slide 3</div>
+      <div class="screen-label"><span class="num">02</span>Onboarding · Combined</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="carousel">
           <div class="illus slide-3">
-            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80" alt="Coffee cherries" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.classList.add('failed')">
-            <div class="caption-tag">Robusta cherries ready for harvest · Mpigi</div>
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80" alt="Robusta coffee cherries · Mpigi" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.classList.add('failed')">
+            <div class="caption-tag">From the farm to your phone · Uganda 🇺🇬</div>
           </div>
           <div class="body">
-            <h2>Today's matooke price. Trace your coffee to the buyer.</h2>
-            <p>Check current UGX prices, contact off-takers like Kyagalanyi &amp; Khamisa Foods, and trace your Hass avocado batch end-to-end.</p>
-            <div class="dots"><span class="d"></span><span class="d"></span><span class="d on"></span></div>
+            <h2>Everything for your farm, in one app.</h2>
+            <div class="feat-list">
+              <div class="feat-row">
+                <div class="fi orange">🛒</div>
+                <div class="ft"><strong>Shop inputs</strong> — seeds, fertilizer, tools at the closest Agro and More outlet.</div>
+              </div>
+              <div class="feat-row">
+                <div class="fi">💬</div>
+                <div class="ft"><strong>Talk to a qualified agronomist</strong> — in English, Luganda, Acholi, Runyankole.</div>
+              </div>
+              <div class="feat-row">
+                <div class="fi rust">🌾</div>
+                <div class="ft"><strong>Sell &amp; trace your produce</strong> — current matooke prices, off-taker contacts, coffee batch tracking.</div>
+              </div>
+            </div>
           </div>
-          <div class="nav"><div class="skip">&nbsp;</div><button class="next">Get Started ›</button></div>
+          <div class="nav" style="justify-content:center"><button class="next" style="padding:0 32px">Get Started ›</button></div>
         </div>
       </div></div>
-      <div class="screen-caption">Slide 3 · CTA becomes "Get Started".</div>
+      <div class="screen-caption">Single onboarding slide · one hero photo · three condensed value props · single CTA. No "Skip" needed.</div>
     </div>
 
-    <!-- 5. Role Selection -->
+    <!-- 3. Role Selection -->
     <div>
-      <div class="screen-label"><span class="num">05</span>Role Selection</div>
+      <div class="screen-label"><span class="num">03</span>Role Selection</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -1876,20 +1860,20 @@
       <div class="screen-caption">Diaspora card shown selected (orange 2dp border).</div>
     </div>
 
-    <!-- 6. Signup Farmer -->
+    <!-- 4. Sign Up · Farmer -->
     <div>
-      <div class="screen-label"><span class="num">06</span>Sign Up · Farmer / Agent / FO</div>
+      <div class="screen-label"><span class="num">04</span>Sign Up · Farmer</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Create Account
+          Sign up · Farmer
         </div>
         <div class="progress"><span class="step">Step 1 of 2</span><div class="bar"><div class="fill"></div></div></div>
         <div class="signup">
           <div class="body">
-            <h2>Tell us about yourself</h2>
-            <p class="sub">Role: Farmer · Mpigi district</p>
+            <h2>Tell us about your farm</h2>
+            <p class="sub">Role: Farmer · we'll show prices &amp; advisory tailored to your district</p>
             <div class="field"><span class="label">Full Name</span><div class="input"><span>Nakato Nabirye</span></div></div>
             <div class="field"><span class="label">Phone Number</span><div class="input"><span class="prefix">+256</span><span>772 456 123</span></div></div>
             <div class="field"><span class="label">Email Address <span style="color:var(--teal);font-weight:500">(optional)</span></span><div class="input"><span class="ph">nakato@email.ug</span></div></div>
@@ -1898,6 +1882,21 @@
               <div><span class="label">Sub-county</span><div class="input"><span>Nkozi</span><span style="margin-left:auto">▾</span></div></div>
             </div>
             <div class="field"><span class="label">Age Range</span><div class="pills"><div class="pill on">18 – 35</div><div class="pill">36 – 60</div></div></div>
+            <div class="field">
+              <span class="label">Crops you grow <span style="color:var(--teal);font-weight:500;font-size:10px">· pick all that apply</span></span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">🍌 Matooke</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">☕ Coffee</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">🌽 Maize</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">🫘 Beans</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">🥑 Hass</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">🍠 Cassava</span>
+              </div>
+            </div>
+            <div class="field row">
+              <div><span class="label">Farm size</span><div class="input"><span>0.5 acres</span><span style="margin-left:auto">▾</span></div></div>
+              <div><span class="label">Village / Parish</span><div class="input"><span>Kayabwe</span></div></div>
+            </div>
             <div class="checkbox"><div class="box"></div><div>I agree to Agro and More storing my data to serve me better.</div></div>
           </div>
           <div class="sticky-btn">
@@ -1906,7 +1905,109 @@
           </div>
         </div>
       </div></div>
-      <div class="screen-caption">+256 prefix locked · dependent District/Sub-county · consent required.</div>
+      <div class="screen-caption">Farmer-specific fields · age range · crops grown · farm size + village · feeds the home dashboard's tailored content.</div>
+    </div>
+
+    <!-- 5. Sign Up · Agro Dealer / Agent -->
+    <div>
+      <div class="screen-label"><span class="num">05</span>Sign Up · Agro Dealer / Agent</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sign up · Agent
+        </div>
+        <div class="progress"><span class="step">Step 1 of 2</span><div class="bar"><div class="fill"></div></div></div>
+        <div class="signup">
+          <div class="body">
+            <h2>Tell us about your shop</h2>
+            <p class="sub">Role: Agro-dealer / Agent · we'll wire up commission and outlet attribution</p>
+            <div class="field"><span class="label">Full Name</span><div class="input"><span>Kato Ibrahim</span></div></div>
+            <div class="field"><span class="label">Phone Number</span><div class="input"><span class="prefix">+256</span><span>772 889 004</span></div></div>
+            <div class="field"><span class="label">Email Address</span><div class="input"><span>kato.i@gmail.com</span></div></div>
+            <div class="field row">
+              <div><span class="label">District</span><div class="input"><span>Kampala</span><span style="margin-left:auto">▾</span></div></div>
+              <div><span class="label">Sub-county</span><div class="input"><span>Kawempe</span><span style="margin-left:auto">▾</span></div></div>
+            </div>
+            <div class="field"><span class="label">Home outlet <span style="color:var(--rust);font-weight:500;font-size:10px">· you'll be tagged here</span></span><div class="input"><span>Kampala Nakawa outlet</span><span style="margin-left:auto">▾</span></div></div>
+            <div class="field row">
+              <div><span class="label">Years in agro-dealing</span><div class="input"><span>5 years</span><span style="margin-left:auto">▾</span></div></div>
+              <div><span class="label">National ID</span><div class="input"><span style="font-family:monospace;font-size:11px">CM800145…</span></div></div>
+            </div>
+            <div class="field">
+              <span class="label">Bank account for commission payout</span>
+              <div class="input"><span>Stanbic Bank · ···4391</span><span style="margin-left:auto">▾</span></div>
+            </div>
+            <div class="card cream" style="border-left:3px solid var(--orange);padding:10px 12px;font-size:11px;color:var(--ink-90);line-height:1.45;margin-top:6px">
+              <strong>Approval needed.</strong> Your application goes to the Kampala Nakawa outlet manager. Approval takes 24–48h. Until then you'll use the app as a regular farmer; commission only counts after approval.
+            </div>
+            <div class="checkbox"><div class="box"></div><div>I'll visit the outlet within 7 days to sign the Agent Agreement.</div></div>
+          </div>
+          <div class="sticky-btn">
+            <button class="btn primary">Send OTP &amp; submit application</button>
+          </div>
+        </div>
+      </div></div>
+      <div class="screen-caption">Agent-specific · home outlet selector (drives commission attribution) · National ID · payout bank · pending-approval note + 7-day agreement commitment.</div>
+    </div>
+
+    <!-- 6. Sign Up · Field Officer -->
+    <div>
+      <div class="screen-label"><span class="num">06</span>Sign Up · Field Officer</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sign up · Field Officer
+        </div>
+        <div class="progress"><span class="step">Step 1 of 2</span><div class="bar"><div class="fill"></div></div></div>
+        <div class="signup">
+          <div class="body">
+            <h2>Tell us about your work</h2>
+            <p class="sub">Role: Extension Officer / Agronomist · farmers will pick you based on these credentials</p>
+            <div class="field"><span class="label">Full Name</span><div class="input"><span>Nakamya Rachel</span></div></div>
+            <div class="field"><span class="label">Phone Number</span><div class="input"><span class="prefix">+256</span><span>772 118 903</span></div></div>
+            <div class="field"><span class="label">Email Address <span style="color:var(--rust);font-weight:500;font-size:10px">· required</span></span><div class="input"><span>rachel.n@mail.ug</span></div></div>
+            <div class="field row">
+              <div><span class="label">University</span><div class="input"><span>Makerere University</span><span style="margin-left:auto">▾</span></div></div>
+              <div><span class="label">Year of graduation</span><div class="input"><span>2025</span><span style="margin-left:auto">▾</span></div></div>
+            </div>
+            <div class="field"><span class="label">Years of experience</span><div class="input"><span>1 year</span><span style="margin-left:auto">▾</span></div></div>
+            <div class="field">
+              <span class="label">Specialities <span style="color:var(--teal);font-weight:500;font-size:10px">· pick all that apply</span></span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">☕ Coffee</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">🥑 Hass Avocado</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">🌽 Maize</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">🫘 Beans</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">🐄 Livestock</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">🍌 Matooke</span>
+              </div>
+            </div>
+            <div class="field">
+              <span class="label">Districts you cover <span style="color:var(--teal);font-weight:500;font-size:10px">· max 5</span></span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">Mbarara</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">Isingiro</span>
+                <span class="pill on" style="flex:0 1 auto;padding:0 12px">Kiruhura</span>
+                <span class="pill" style="flex:0 1 auto;padding:0 12px">+ Add</span>
+              </div>
+            </div>
+            <div class="field"><span class="label">Languages you advise in</span><div class="input"><span>English · Runyankole</span><span style="margin-left:auto">▾</span></div></div>
+            <div class="field">
+              <span class="label">BSc certificate <span style="color:var(--rust);font-weight:500;font-size:10px">· required for verification</span></span>
+              <div style="border:1.5px dashed var(--teal);border-radius:10px;padding:14px;text-align:center;font-size:11.5px;color:var(--teal);font-weight:600">📄 Tap to upload PDF or photo</div>
+            </div>
+            <div class="card cream" style="border-left:3px solid var(--teal);padding:10px 12px;font-size:11px;color:var(--ink-90);line-height:1.45;margin-top:6px">
+              <strong>Senior Agronomist will review.</strong> Achieng Grace personally vets every officer · expect 3–5 business days for verification.
+            </div>
+          </div>
+          <div class="sticky-btn">
+            <button class="btn primary">Send OTP &amp; submit application</button>
+          </div>
+        </div>
+      </div></div>
+      <div class="screen-caption">FO-specific · university + graduation year · multi-speciality · covered districts · BSc cert upload · 3–5 day vetting note from Achieng Grace.</div>
     </div>
 
     <!-- 7. Signup Diaspora -->
@@ -2366,7 +2467,7 @@
           Crop Protection
           <div class="actions"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="#FFECD1" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         </div>
-        <div class="content"><div class="scroll">
+        <div class="content"><div class="scroll" style="padding-bottom:60px">
           <div class="filter-row">
             <span class="chip orange">All · 136</span>
             <span class="chip ghost">Fungicides</span>
@@ -2384,10 +2485,9 @@
             <div class="info">
               <div class="pn">Mancozeb 80WP Fungicide · 1 kg</div>
               <div class="pd">Broad-spectrum · coffee leaf rust, blight</div>
-              <span class="stock-pill in">In stock · 412</span>
               <div class="pr">
                 <span class="price">UGX 18,000</span>
-                <button class="add">+</button>
+                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n" style="font-size:12px;min-width:22px">2</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
               </div>
             </div>
           </div>
@@ -2397,10 +2497,9 @@
             <div class="info">
               <div class="pn">Rocket 44 EC Insecticide · 250 ml</div>
               <div class="pd">Fall armyworm · aphids · maize &amp; beans</div>
-              <span class="stock-pill low">Low stock · 12</span>
               <div class="pr">
                 <span class="price">UGX 22,500</span>
-                <button class="add">+</button>
+                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n" style="font-size:12px;min-width:22px">0</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
               </div>
             </div>
           </div>
@@ -2410,10 +2509,9 @@
             <div class="info">
               <div class="pn">Round-up Herbicide · 1 L</div>
               <div class="pd">Systemic · kills weeds root &amp; shoot</div>
-              <span class="stock-pill in">In stock · 46</span>
               <div class="pr">
                 <span class="price">UGX 35,000</span>
-                <button class="add">+</button>
+                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n" style="font-size:12px;min-width:22px">1</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
               </div>
             </div>
           </div>
@@ -2423,97 +2521,43 @@
             <div class="info">
               <div class="pn">Agrolyser Knapsack Sprayer · 16 L</div>
               <div class="pd">Piston pump · adjustable nozzle</div>
-              <span class="stock-pill in">In stock · 9</span>
               <div class="pr">
                 <span class="price">UGX 120,000</span>
-                <button class="add">+</button>
+                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n" style="font-size:12px;min-width:22px">0</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
               </div>
             </div>
           </div>
 
-          <div class="product-row">
+          <div class="product-row" style="opacity:.55">
             <div class="thumb" style="background:#F1E4C9;color:#8B5A2B">DUDU<br>ACELAMEC.</div>
             <div class="info">
               <div class="pn">Dudu Acelamectin · 100 ml</div>
               <div class="pd">Tomato leaf miner · cabbage worms</div>
-              <span class="stock-pill out">Out of stock</span>
               <div class="pr">
                 <span class="price">UGX 14,500</span>
-                <button class="add disabled">+</button>
+                <span style="font-size:10.5px;color:var(--rust);font-weight:700;background:rgba(120,41,15,.1);padding:4px 10px;border-radius:6px">Currently unavailable</span>
               </div>
             </div>
           </div>
 
         </div></div>
-        %%BNAV_SHOP%%
-      </div></div>
-      <div class="screen-caption">Sub-category chips · stock pill on every card · rust pill for out-of-stock, orange for low.</div>
-    </div>
-
-    <!-- Product detail -->
-    <div>
-      <div class="screen-label"><span class="num">03</span>Product Detail · Mancozeb 80WP</div>
-      <div class="phone"><div class="screen">
-        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
-        <div class="app-bar">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Product
-          <div class="actions">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14" stroke="#FFECD1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="content"><div class="scroll" style="display:flex;flex-direction:column">
-          <div class="pdet-hero" style="background:#E8F0CC">
-            <div class="big-label">Mancozeb 80WP<br><span style="font-size:11px;color:var(--teal);font-weight:600">Fungicide · 1kg pack</span></div>
-            <div class="dots"><span class="d on"></span><span class="d"></span><span class="d"></span></div>
-          </div>
-          <div class="pdet-head">
-            <div>
-              <h2>Mancozeb 80WP Fungicide</h2>
-              <span class="stock-pill in" style="margin-top:6px">In stock · 412 units</span>
-            </div>
-            <div>
-              <div class="price">UGX 18,000</div>
-              <div class="unit">per 1 kg bag</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-            <span class="chip teal">MAAIF Reg. UG-FNG-2024-118</span>
-            <span class="chip ghost">☕ Coffee</span>
-            <span class="chip ghost">🍅 Tomato</span>
-            <span class="chip ghost">🫘 Beans</span>
-          </div>
-
-          <div class="seg">
-            <div class="so on">Description</div>
-            <div class="so">How to use</div>
-            <div class="so">Reviews · 24</div>
-          </div>
-
-          <div class="body-text">
-            <p><strong>Mancozeb 80WP</strong> is a broad-spectrum contact fungicide registered in Uganda for controlling coffee leaf rust, tomato early and late blight, bean rust, and downy mildews.</p>
-            <p>Supplied as a wettable powder in a 1 kg foil pouch. Each pouch treats about 200 L of water at recommended rates.</p>
-            <p><strong>Re-entry interval:</strong> 12 hours. <strong>Pre-harvest interval:</strong> 7 days for coffee, 3 days for tomatoes.</p>
-          </div>
-
-          <div style="display:flex;align-items:center;gap:14px;margin-top:14px">
-            <span style="font-size:11px;font-weight:700;color:var(--ink)">QUANTITY</span>
-            <div class="qty-stepper"><button>−</button><span class="n">2</span><button>+</button></div>
-            <span style="margin-left:auto;font-family:'Poppins';font-weight:800;font-size:14px;color:var(--ink)">UGX 36,000</span>
-          </div>
-        </div></div>
-        <div class="sticky-foot">
-          <button class="btn secondary" style="flex:0 0 40%">Buy now</button>
-          <button class="btn primary">Add to Cart</button>
+        <div class="sticky-foot" style="padding:10px 14px">
+          <button class="btn primary" style="display:flex;justify-content:space-between;align-items:center;padding:0 16px">
+            <span style="display:flex;align-items:center;gap:8px">
+              <span style="background:rgba(255,255,255,.22);font-family:'Poppins';font-weight:800;font-size:11px;padding:2px 8px;border-radius:999px">3 items</span>
+              <span>Next</span>
+            </span>
+            <span style="font-family:'Poppins';font-weight:800;font-size:13px">UGX 89,000 ›</span>
+          </button>
         </div>
         %%BNAV_SHOP%%
       </div></div>
-      <div class="screen-caption">MAAIF registration chip · compatible crops · segmented info · qty stepper · dual CTA.</div>
+      <div class="screen-caption">No stock counts · per-row quantity stepper · out-of-stock items dimmed with "Currently unavailable" tag · sticky <strong>Next</strong> button shows running cart count and total before tapping through to Cart.</div>
     </div>
 
     <!-- Cart -->
     <div>
-      <div class="screen-label"><span class="num">04</span>Cart</div>
+      <div class="screen-label"><span class="num">03</span>Cart · Pickup or Delivery</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -2521,54 +2565,157 @@
           My Cart · 3 items
         </div>
         <div class="content"><div class="scroll" style="display:flex;flex-direction:column">
-          <div class="cart-row">
-            <div class="thumb" style="background:#E8F0CC"></div>
-            <div class="info">
-              <div class="pn">Mancozeb 80WP Fungicide · 1 kg</div>
-              <div class="pr">
-                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n">2</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
-                <div class="price">UGX 36,000</div>
-              </div>
-              <div class="del">Remove</div>
-            </div>
+          <!-- ITEM SUMMARY · read-only -->
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px">YOUR ORDER · 3 items</div>
+          <div class="card" style="padding:10px 12px;margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px dashed var(--ink-10)"><span style="color:var(--ink);font-weight:600">Mancozeb 80WP · 1 kg <span style="color:var(--ink-60);font-weight:500">× 2</span></span><span style="font-family:'Poppins';font-weight:700">UGX 36,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px dashed var(--ink-10)"><span style="color:var(--ink);font-weight:600">DAP Fertilizer · 50 kg <span style="color:var(--ink-60);font-weight:500">× 1</span></span><span style="font-family:'Poppins';font-weight:700">UGX 220,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0"><span style="color:var(--ink);font-weight:600">Longe 5 Maize seed · 5 kg <span style="color:var(--ink-60);font-weight:500">× 3</span></span><span style="font-family:'Poppins';font-weight:700">UGX 84,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--teal);font-weight:700;padding-top:8px;margin-top:4px;border-top:1px solid var(--ink-10)"><span>Subtotal</span><span style="font-family:'Poppins';font-size:12.5px">UGX 340,000</span></div>
           </div>
-          <div class="cart-row">
-            <div class="thumb" style="background:#FDD9B5"></div>
-            <div class="info">
-              <div class="pn">DAP Fertilizer · 50 kg</div>
-              <div class="pr">
-                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n">1</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
-                <div class="price">UGX 220,000</div>
-              </div>
-              <div class="del">Remove</div>
-            </div>
-          </div>
-          <div class="cart-row">
-            <div class="thumb" style="background:#F1E4C9"></div>
-            <div class="info">
-              <div class="pn">Longe 5 OPV Maize seed · 5 kg</div>
-              <div class="pr">
-                <div class="qty-stepper" style="padding:2px"><button style="width:24px;height:24px;font-size:12px">−</button><span class="n">3</span><button style="width:24px;height:24px;font-size:12px">+</button></div>
-                <div class="price">UGX 84,000</div>
-              </div>
-              <div class="del">Remove</div>
+
+          <!-- DELIVERY HEADER · STAND-OUT -->
+          <div style="background:linear-gradient(90deg, var(--ink) 0%, var(--teal) 100%);color:var(--cream);padding:12px 14px;border-radius:10px;margin:6px 0 12px;display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,236,209,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📦</div>
+            <div>
+              <div style="font-family:'Poppins';font-weight:800;font-size:14px;line-height:1.2">How would you like to receive your order?</div>
+              <div style="font-size:10.5px;opacity:.85;margin-top:2px">Pick one · price updates below</div>
             </div>
           </div>
 
-          <div class="summary-card">
+          <div class="card orange-outline" style="padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center">
+            <div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--orange);background:#fff;flex-shrink:0;position:relative"><div style="position:absolute;inset:3px;border-radius:50%;background:var(--orange)"></div></div>
+            <div style="width:34px;height:34px;border-radius:10px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🛵</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12.5px;font-weight:800;color:var(--ink)">Drive-through pickup</div>
+              <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.35">Boda or car · ride up to Mpigi Town outlet, show your code, grab and go in &lt; 2 minutes. Ready in ~15 min after we verify payment.</div>
+              <div style="font-size:11px;color:var(--teal);font-weight:700;margin-top:4px">Free</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center;border:1.5px solid var(--ink-10)">
+            <div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--ink-20);background:#fff;flex-shrink:0"></div>
+            <div style="width:34px;height:34px;border-radius:10px;background:var(--cream);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🏪</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12.5px;font-weight:700;color:var(--ink)">In-store pickup</div>
+              <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.35">Walk in any time during opening hours · Mpigi Town outlet · 7am – 7pm</div>
+              <div style="font-size:11px;color:var(--teal);font-weight:700;margin-top:4px">Free</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center;border:1.5px solid var(--ink-10)">
+            <div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--ink-20);background:#fff;flex-shrink:0"></div>
+            <div style="width:34px;height:34px;border-radius:10px;background:var(--cream);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🚚</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12.5px;font-weight:700;color:var(--ink)">Boda delivery to your address</div>
+              <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.35">Same-day if ordered before 2pm · price depends on your area</div>
+              <div style="font-size:11px;color:var(--ink);font-weight:700;margin-top:4px">From UGX 3,000 ›</div>
+            </div>
+          </div>
+
+          <div class="summary-card" style="margin-top:8px">
             <div class="summary-row"><span>Subtotal (3 items)</span><strong>UGX 340,000</strong></div>
-            <div class="summary-row"><span>Pickup at Mpigi Town outlet</span><strong style="color:var(--teal)">Free</strong></div>
-            <div class="summary-row"><span>Boda delivery to Nkozi</span><strong>UGX 5,000</strong></div>
-            <div class="summary-row total"><span>Total</span><span class="amt">UGX 345,000</span></div>
+            <div class="summary-row"><span>Drive-through · Mpigi Town</span><strong style="color:var(--teal)">Free</strong></div>
+            <div class="summary-row total"><span>Total</span><span class="amt">UGX 340,000</span></div>
           </div>
 
-          <div style="font-size:11px;color:var(--teal);margin-top:10px;text-align:center;font-weight:600">🚚 Switch to Pickup to save UGX 5,000</div>
-
-          <div style="margin-top:auto;padding-top:12px"><button class="btn primary">Proceed to Checkout</button></div>
+          <div style="margin-top:auto;padding-top:12px"><button class="btn primary">Proceed to Pay</button></div>
         </div></div>
         %%BNAV_SHOP%%
       </div></div>
-      <div class="screen-caption">Swipe-remove cart rows · summary includes pickup vs boda delivery toggle.</div>
+      <div class="screen-caption">Read-only order summary at top · ink-to-teal banner makes "How would you like to receive your order?" stand out · 3 receive options (Drive-through, In-store, Boda delivery) · CTA renamed to <strong>Proceed to Pay</strong>.</div>
+    </div>
+
+    <!-- Boda Delivery · NEW -->
+    <div>
+      <div class="screen-label"><span class="num">04</span>Boda Delivery · Address &amp; Price</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Boda Delivery
+        </div>
+        <div class="content"><div class="scroll" style="display:flex;flex-direction:column">
+
+          <!-- Address card -->
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px">DELIVER TO</div>
+          <div class="card" style="padding:14px;margin-bottom:10px;border:1.5px solid var(--orange);background:#FFF4E4">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:36px;height:36px;border-radius:10px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 1114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:12.5px;font-weight:800;color:var(--ink)">My farm · Kayabwe</div>
+                <div style="font-size:11px;color:var(--ink-60);margin-top:3px;line-height:1.45">200m from Nkozi Trading Centre, next to Kayabwe Primary School<br>Mpigi · Nkozi sub-county</div>
+                <div style="font-size:10.5px;color:var(--teal);margin-top:4px;font-weight:600">📞 Recipient: +256 772 456 123 (you)</div>
+              </div>
+              <button class="btn secondary" style="height:30px;font-size:11px;padding:0 12px;flex-shrink:0">Change</button>
+            </div>
+          </div>
+
+          <!-- Stylised map -->
+          <div style="background:linear-gradient(135deg,#1f8a95 0%,#0D4751 100%);border-radius:12px;height:130px;position:relative;overflow:hidden;margin-bottom:14px">
+            <div style="position:absolute;inset:0;opacity:.25;background-image:linear-gradient(rgba(255,236,209,.35) 1px, transparent 1px),linear-gradient(90deg,rgba(255,236,209,.35) 1px, transparent 1px);background-size:24px 24px"></div>
+            <!-- Outlet pin -->
+            <div style="position:absolute;left:24%;top:38%;color:#fff;text-align:center;z-index:2">
+              <div style="width:24px;height:24px;border-radius:50% 50% 50% 0;background:var(--teal);transform:rotate(-45deg);margin:0 auto;box-shadow:0 4px 8px rgba(0,21,36,.3);border:2px solid #fff"></div>
+              <div style="font-size:8.5px;font-weight:700;background:rgba(0,21,36,.6);padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">MPIGI TOWN</div>
+            </div>
+            <!-- Farmer pin (highlighted) -->
+            <div style="position:absolute;right:18%;top:54%;color:#fff;text-align:center;z-index:2">
+              <div style="width:30px;height:30px;border-radius:50% 50% 50% 0;background:var(--orange);transform:rotate(-45deg);margin:0 auto;box-shadow:0 6px 14px rgba(255,125,0,.5);border:2px solid #fff;position:relative"><div style="position:absolute;inset:9px;border-radius:50%;background:#fff;transform:rotate(45deg)"></div></div>
+              <div style="font-size:8.5px;font-weight:700;background:rgba(255,125,0,.85);padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">YOU · KAYABWE</div>
+            </div>
+            <!-- route line -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 340 130" preserveAspectRatio="none">
+              <path d="M85 60 Q 180 50 260 80" stroke="rgba(255,236,209,.7)" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
+            </svg>
+            <div style="position:absolute;bottom:8px;left:10px;background:rgba(0,21,36,.55);color:var(--cream);font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:4px;backdrop-filter:blur(4px)">📍 6.2 km from outlet · ~22 min boda</div>
+          </div>
+
+          <!-- Price card · supported area -->
+          <div class="card" style="padding:14px;margin-bottom:10px;background:#E4F3F5;border:1.5px solid var(--teal)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+              <div>
+                <div style="font-size:10.5px;color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.05em">Boda fee for Kayabwe ✓ supported</div>
+                <div style="font-family:'Poppins';font-weight:800;font-size:22px;color:var(--ink);margin-top:4px;line-height:1">UGX 5,000</div>
+                <div style="font-size:10.5px;color:var(--ink-60);margin-top:3px">Same-day if you pay before 2pm · ETA 30–60 min after dispatch</div>
+              </div>
+              <div style="font-size:24px">🛵</div>
+            </div>
+          </div>
+
+          <!-- Other areas in this zone -->
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:8px 0 8px">OTHER AREAS WE DELIVER TO · FROM MPIGI TOWN</div>
+          <div class="card" style="padding:0;margin-bottom:10px;overflow:hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Nkozi Trading Centre <span style="color:var(--ink-60);font-size:10.5px">· 4.1 km</span></span><strong style="font-family:'Poppins'">UGX 3,000</strong></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px;background:#FFF4E4"><span style="font-weight:700;color:var(--ink)">Kayabwe <span style="color:var(--orange);font-size:10px">· you are here</span></span><strong style="font-family:'Poppins';color:var(--orange)">UGX 5,000</strong></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Buwama <span style="color:var(--ink-60);font-size:10.5px">· 12 km</span></span><strong style="font-family:'Poppins'">UGX 8,000</strong></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Kayabuwala <span style="color:var(--ink-60);font-size:10.5px">· 15 km</span></span><strong style="font-family:'Poppins'">UGX 10,000</strong></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;font-size:12px"><span>Mityana road · 18 km <span style="color:var(--ink-60);font-size:10.5px">· edge of zone</span></span><strong style="font-family:'Poppins'">UGX 12,000</strong></div>
+          </div>
+
+          <!-- Unsupported / call fallback -->
+          <div style="background:rgba(120,41,15,.06);border:1.5px dashed var(--rust);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color:var(--rust);flex-shrink:0;margin-top:2px"><path d="M12 3l9 17H3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:800;color:var(--rust)">Don't see your area?</div>
+                <div style="font-size:11px;color:var(--ink-90);line-height:1.5;margin-top:2px">If your village is beyond our usual zone or isn't listed, call Mpigi Town outlet — they'll quote a custom rate or arrange a meet-point at the nearest trading centre.</div>
+                <button class="btn primary" style="margin-top:10px;width:auto;padding:0 16px;height:36px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  Call Mpigi Town · +256 414 223 045
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:auto;padding-top:8px"><button class="btn primary">Confirm address &amp; continue</button></div>
+
+        </div></div>
+        %%BNAV_SHOP%%
+      </div></div>
+      <div class="screen-caption">NEW step shown only when farmer picks Boda delivery · editable address · stylised map with outlet + farmer pins · live price for Kayabwe (UGX 5,000) · price table for nearby zones · rust call-fallback if area isn't supported.</div>
     </div>
 
     <!-- Checkout -->
@@ -2582,10 +2729,15 @@
         </div>
         <div class="content"><div class="scroll" style="display:flex;flex-direction:column">
           <div class="od-section-title">DELIVERY</div>
-          <div class="card" style="margin-bottom:10px">
-            <div style="font-size:11px;color:var(--teal);font-weight:600;margin-bottom:4px">Pickup outlet</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><strong>Mpigi Town outlet</strong><span style="color:var(--teal);font-size:11px">Change</span></div>
-            <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px">Plot 14, Mpigi main road · Opens 7am</div>
+          <div class="card" style="margin-bottom:10px;border-left:3px solid var(--orange);background:#FFF4E4">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+              <div>
+                <div style="font-size:10.5px;color:var(--orange);font-weight:800;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:4px">🛵 Drive-through pickup</div>
+                <div style="font-size:12.5px;font-weight:700;margin-top:3px"><strong>Mpigi Town outlet</strong></div>
+                <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px">Plot 14, Mpigi main road · Ready ~15 min after payment verified</div>
+              </div>
+              <span style="color:var(--teal);font-size:11px;font-weight:700">Change</span>
+            </div>
           </div>
 
           <div class="od-section-title">PAYMENT</div>
@@ -2911,8 +3063,11 @@
             <span class="chip ghost">Livestock</span>
             <span class="chip ghost">Horticulture</span>
             <span class="chip ghost">Luganda</span>
+            <span class="chip ghost">⭐ Top-rated</span>
+            <span class="chip ghost">🎓 Recently graduated</span>
+            <span class="chip ghost">Sort: Highest rated ▾</span>
           </div>
-          <div style="font-size:11px;color:var(--ink-60);margin-bottom:8px;font-weight:500">12 Field Officers available now across Uganda</div>
+          <div style="font-size:11px;color:var(--ink-60);margin-bottom:8px;font-weight:500;display:flex;justify-content:space-between"><span>13 Field Officers available now · all admin-approved</span><span style="color:var(--teal);font-weight:700">How are these chosen?</span></div>
 
           <div class="officer-card">
             <div class="ava" style="background:#15616D">OJ</div>
@@ -2929,7 +3084,17 @@
             <div class="oi">
               <div class="on">Achieng Grace</div>
               <div class="od">Mbale · Horticulture &amp; Hass Avocado</div>
-              <div class="om"><span class="st">★ 4.9</span><span>·</span><span>En · Luganda · Luo</span><span class="chip teal" style="font-size:8.5px;padding:1px 6px">Senior</span></div>
+              <div class="om"><span class="st">★ 4.9</span><span>·</span><span>15 yrs · MUK '10</span><span>·</span><span>En · Luganda · Luo</span><span class="chip teal" style="font-size:8.5px;padding:1px 6px">Senior</span></div>
+            </div>
+            <button class="call-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+          </div>
+
+          <div class="officer-card">
+            <div class="ava" style="background:#78290F">NR</div>
+            <div class="oi">
+              <div class="on">Nakamya Rachel <span class="chip orange" style="font-size:8.5px;padding:1px 6px;margin-left:2px">🎓 Class of 2025</span></div>
+              <div class="od">Mbarara · Avocado &amp; Maize · MUK BSc</div>
+              <div class="om"><span class="st">★ 4.4</span><span>·</span><span>1 yr · 8 farmers helped</span><span>·</span><span>En · Runyankole</span></div>
             </div>
             <button class="call-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
           </div>
@@ -2939,7 +3104,7 @@
             <div class="oi">
               <div class="on">Byaruhanga Moses</div>
               <div class="od">Hoima · Coffee &amp; Post-harvest</div>
-              <div class="om"><span class="st">★ 4.6</span><span>·</span><span>En · Runyoro</span></div>
+              <div class="om"><span class="st">★ 4.6</span><span>·</span><span>9 yrs · MUST '15</span><span>·</span><span>En · Runyoro</span></div>
             </div>
             <button class="call-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
           </div>
@@ -2967,7 +3132,7 @@
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">Filter by district · speciality · language · rating shown · orange Call circular button.</div>
+      <div class="screen-caption">Filter by district · speciality · language · sort by rating · "Recently graduated" filter highlights newer officers like Nakamya Rachel · Class of 2025.</div>
     </div>
 
     <!-- 3. OFFICER PROFILE -->
@@ -2995,8 +3160,15 @@
           </div>
 
           <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px">ABOUT</div>
-          <p style="font-size:11.5px;color:var(--ink-90);line-height:1.5;margin:0 0 14px">15 years supporting smallholder coffee farmers across Butambala and Mpigi. Specialises in Robusta pruning, leaf rust, and cooperative marketing. BSc Agriculture, Makerere University.</p>
+          <p style="font-size:11.5px;color:var(--ink-90);line-height:1.5;margin:0 0 14px">15 years supporting smallholder coffee farmers across Butambala and Mpigi. Specialises in Robusta pruning, leaf rust, and cooperative marketing.</p>
 
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:6px 0 6px">CREDENTIALS</div>
+          <div class="info-row"><span class="k">Education</span><span class="v">BSc Agriculture · MUK '10</span></div>
+          <div class="info-row"><span class="k">Years of experience</span><span class="v">15 yrs</span></div>
+          <div class="info-row"><span class="k">Certifications</span><span class="v">UCDA · 4S · ISO 22000</span></div>
+          <div class="info-row"><span class="k">Verified by</span><span class="v" style="color:var(--teal)">✓ Agro and More HQ</span></div>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 6px">REACH &amp; AVAILABILITY</div>
           <div class="info-row"><span class="k">Languages</span><span class="v">English · Luganda · Acholi</span></div>
           <div class="info-row"><span class="k">Covers</span><span class="v">Butambala · Mpigi · Gomba</span></div>
           <div class="info-row"><span class="k">Available</span><span class="v" style="color:var(--teal)">Mon–Sat · 7am–7pm</span></div>
@@ -3009,7 +3181,7 @@
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">Tapping an officer card opens this · bio · coverage · response time.</div>
+      <div class="screen-caption">Tap an officer card to see full credentials · university + graduation year · certifications · "Verified by Agro and More HQ" tick · coverage districts · response time.</div>
     </div>
 
     <!-- 4. CALL CONFIRMATION BOTTOM SHEET -->
@@ -5409,9 +5581,68 @@
   </div>
   <div class="grid">
 
-    <!-- 1. FO HOME -->
+    <!-- 1. FO PENDING APPROVAL -->
     <div>
-      <div class="screen-label"><span class="num">01</span>FO · Home Dashboard</div>
+      <div class="screen-label"><span class="num">01</span>FO · Pending Approval</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <div class="leaf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 6 6 12 8 18c4-1 8-5 8-10a8 8 0 00-4-5z" fill="#FFECD1"/></svg></div>
+          <div class="greet"><span class="name">Welcome, Rachel</span><span class="loc">Field Officer · application received</span></div>
+          <div class="actions"><div class="avatar" style="background:var(--orange)">NR</div></div>
+        </div>
+        <div class="content"><div class="scroll">
+
+          <div class="pending-hero">
+            <div class="clock-ring">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h2>Achieng Grace is reviewing your application</h2>
+            <div class="p">Senior Agronomist personally vets every Field Officer · expect a decision in 3–5 business days.</div>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:6px 0 8px">YOUR APPLICATION</div>
+          <div class="card">
+            <div class="info-row"><span class="k">Name</span><span class="v">Nakamya Rachel</span></div>
+            <div class="info-row"><span class="k">Phone</span><span class="v">+256 772 118 903</span></div>
+            <div class="info-row"><span class="k">University</span><span class="v">MUK · Class of 2025</span></div>
+            <div class="info-row"><span class="k">Specialities</span><span class="v">Coffee · Hass · Maize</span></div>
+            <div class="info-row"><span class="k">Districts</span><span class="v">Mbarara · Isingiro · Kiruhura</span></div>
+            <div class="info-row"><span class="k">Submitted</span><span class="v">24 Apr · 09:42</span></div>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px">WHAT HAPPENS NEXT</div>
+          <div class="timeline" style="padding-left:26px">
+            <div class="step"><div class="t">Application submitted</div><div class="s">24 Apr · 09:42 · ✓ Received</div></div>
+            <div class="step active"><div class="t">Senior Agronomist review</div><div class="s">In progress · typically 3–5 business days</div><div class="d">Achieng Grace · HQ Kampala</div></div>
+            <div class="step pending"><div class="t">Phone interview</div><div class="s">15-min call · we'll text you a slot</div></div>
+            <div class="step pending"><div class="t">Verification checklist signed off</div><div class="s">National ID · BSc cert · references</div></div>
+            <div class="step pending"><div class="t">Live in farmer directory</div><div class="s">SMS + the FO dashboard unlocks</div></div>
+          </div>
+
+          <div class="card cream" style="border-left:3px solid var(--teal);margin-top:14px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="color:var(--teal);flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v5M12 16h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div style="font-size:11px;color:var(--ink-90);line-height:1.5">
+                <strong>In the meantime,</strong> use the app as a regular farmer — shop, watch advisory videos, check produce prices. Your Field Officer dashboard unlocks the moment Achieng approves.
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <button class="btn primary">Call Agro and More HQ</button>
+            <button class="btn secondary" style="width:auto;padding:0 14px">Use as farmer</button>
+          </div>
+
+        </div></div>
+        %%BNAV_FO_HOME%%
+      </div></div>
+      <div class="screen-caption">Officer's first screen after sign-up · orange clock hero · 5-step timeline (submitted → senior agronomist review active → phone interview → verification checklist → live in directory) · fallback to "use as farmer" while waiting.</div>
+    </div>
+
+    <!-- 2. FO HOME -->
+    <div>
+      <div class="screen-label"><span class="num">02</span>FO · Home Dashboard</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5496,7 +5727,7 @@
 
     <!-- 2. ADVISORY DASHBOARD -->
     <div>
-      <div class="screen-label"><span class="num">02</span>Advisory Dashboard</div>
+      <div class="screen-label"><span class="num">03</span>Advisory Dashboard</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5592,7 +5823,7 @@
 
     <!-- 3. LOG FARM VISIT · FORM -->
     <div>
-      <div class="screen-label"><span class="num">03</span>Log Farm Visit · Form</div>
+      <div class="screen-label"><span class="num">04</span>Log Farm Visit · Form</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5677,17 +5908,26 @@
             </div>
           </div>
 
+          <div style="background:#FFF4E4;border:1.5px solid var(--orange);border-radius:12px;padding:12px;margin-top:8px;display:flex;gap:10px;align-items:center">
+            <div style="width:34px;height:34px;border-radius:10px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">⭐</div>
+            <div style="flex:1">
+              <div style="font-size:12.5px;font-weight:700;color:var(--ink)">Ask Namutebi to rate this visit</div>
+              <div style="font-size:10.5px;color:var(--ink-60);margin-top:1px;line-height:1.35">She'll get a push notification right away to leave 1–5 stars + a quick comment.</div>
+            </div>
+            <div class="toggle on" style="flex-shrink:0"></div>
+          </div>
+
           <div style="margin-top:14px"><button class="btn primary">Submit visit log</button></div>
 
         </div></div>
         %%BNAV_FO_VISITS%%
       </div></div>
-      <div class="screen-caption">Teal "GPS locked" pill with coordinates · linked farmer · crop + plot · observed/advised textareas · 2 of 4 photos taken.</div>
+      <div class="screen-caption">GPS-locked pill · linked farmer · observed/advised textareas · 2 of 4 photos · NEW orange "Ask Namutebi to rate" toggle pushes a rating prompt to her phone on submit.</div>
     </div>
 
     <!-- 4. LOG FARM VISIT · GPS UNAVAILABLE -->
     <div>
-      <div class="screen-label"><span class="num">04</span>Log Visit · GPS Unavailable</div>
+      <div class="screen-label"><span class="num">05</span>Log Visit · GPS Unavailable</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5751,7 +5991,7 @@
 
     <!-- 5. MY VISITS LIST -->
     <div>
-      <div class="screen-label"><span class="num">05</span>My Visits</div>
+      <div class="screen-label"><span class="num">06</span>My Visits</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5839,7 +6079,7 @@
 
     <!-- 6. VISIT DETAIL -->
     <div>
-      <div class="screen-label"><span class="num">06</span>Visit Detail</div>
+      <div class="screen-label"><span class="num">07</span>Visit Detail</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -5908,6 +6148,15 @@
             <span style="color:var(--teal);font-size:11px;font-weight:700">View ›</span>
           </div>
 
+          <div style="background:rgba(21,97,109,.08);border:1.5px dashed var(--teal);border-radius:12px;padding:10px 12px;margin-top:14px;display:flex;gap:10px;align-items:center">
+            <div style="width:34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">⭐</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">Namutebi hasn't rated this visit yet</div>
+              <div style="font-size:10.5px;color:var(--ink-60);margin-top:1px">Send her a reminder — most farmers rate within 30 minutes.</div>
+            </div>
+            <button class="btn small primary" style="background:var(--teal)">Request rating</button>
+          </div>
+
           <div style="display:flex;gap:8px;margin-top:14px">
             <button class="btn primary">Call Namutebi</button>
             <button class="btn secondary" style="width:auto;padding:0 14px">Edit</button>
@@ -5916,12 +6165,12 @@
         </div></div>
         %%BNAV_FO_VISITS%%
       </div></div>
-      <div class="screen-caption">Map tile with orange pin + GPS accuracy · full observations + advice · photo gallery · past-visits card for the same farmer.</div>
+      <div class="screen-caption">Map tile with orange pin · full observations + advice · photo gallery · past-visits card · NEW teal "Request rating" prompt if the farmer hasn't rated yet.</div>
     </div>
 
     <!-- 7. CALLS & RATINGS LOG -->
     <div>
-      <div class="screen-label"><span class="num">07</span>Calls &amp; Ratings Log</div>
+      <div class="screen-label"><span class="num">08</span>Calls &amp; Ratings Log</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -6015,7 +6264,7 @@
 
     <!-- 8. AVAILABILITY -->
     <div>
-      <div class="screen-label"><span class="num">08</span>Availability &amp; Profile</div>
+      <div class="screen-label"><span class="num">09</span>Availability &amp; Profile</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
