@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agro and More — App Mockups</title>
+
+<!-- PWA · installable Android app -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#001524">
+<meta name="background-color" content="#FFECD1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Agro & More">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Agro and More">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
@@ -606,7 +620,8 @@
   /* Confirmation */
   .confirm{padding:20px 18px;display:flex;flex-direction:column;height:100%;overflow:auto;align-items:stretch}
   .confirm .check{
-    width:80px;height:80px;border-radius:50%;background:var(--orange);color:#fff;
+    width:80px;height:80px;flex-shrink:0;align-self:center;
+    border-radius:50%;background:var(--orange);color:#fff;
     display:flex;align-items:center;justify-content:center;margin:8px auto 12px;
     box-shadow:0 10px 24px -8px rgba(255,125,0,.6);
   }
@@ -1769,17 +1784,7 @@
       <div class="phone"><div class="screen">
         <div class="splash">
           <div class="pattern"></div>
-          <svg class="logo-svg" viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 78 Q 18 60, 30 30 Q 55 12, 88 30 Q 102 52, 88 76 Q 72 90, 50 78 Z" fill="#7CC04A"/>
-            <path d="M72 50 Q 56 20, 78 6 Q 104 0, 116 22 Q 118 46, 100 58 Q 82 62, 72 50 Z" fill="#1F8A3A"/>
-            <path d="M70 82 Q 58 56, 82 36" stroke="#1F8A3A" stroke-width="3.2" fill="none" stroke-linecap="round"/>
-            <text x="60" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#1F8A3A" font-style="italic" letter-spacing="-2">ag</text>
-            <text x="152" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#1F8A3A" font-style="italic" letter-spacing="-2">m</text>
-            <circle cx="222" cy="93" r="20" fill="#FF7D00"/>
-            <path d="M218 84 Q 214 90, 218 98 Q 224 96, 226 90 Q 224 85, 218 84 Z" fill="#1F8A3A"/>
-            <text x="245" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#E94E1B" font-style="italic" letter-spacing="-2">re</text>
-            <text x="260" y="150" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#FF7D00" font-style="italic">kisoboka...</text>
-          </svg>
+          <img class="logo-svg" src="brand/agmore-full.png" alt="Agro and More — Agribusiness Developers Ltd" style="width:260px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12))">
           <div class="powered">Agri-Business Developers Ltd</div>
           <div class="loader"></div>
         </div>
@@ -2128,7 +2133,7 @@
           </div>
           <div class="quick-grid">
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="qn">Shop inputs</div><div class="qd">Seeds, fertilizer, tools</div></div>
-            <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="qn">Call an expert</div><div class="qd">Agronomist on call</div></div>
+            <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="qn">Talk to an expert</div><div class="qd">Agronomist available</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V5M16 8V5M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="qn">Today's prices</div><div class="qd">Produce across Uganda</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.5" fill="currentColor"/><circle cx="16" cy="17" r="1.5" fill="currentColor"/></svg></div><div class="qn">Hire a tractor</div><div class="qd">Ploughing, threshing</div></div>
           </div>
@@ -2164,7 +2169,7 @@
           <div class="tabs"><div class="t on">All · 4</div><div class="t">Orders</div><div class="t">Advisory</div><div class="t">System</div></div>
           <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Order dispatched</div><div class="preview">Your order <strong>AM-2026-04-24-0137</strong> has left Mpigi Town outlet. Expected tomorrow.</div><div class="ts">Just now</div></div></div>
           <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 6 6 12 8 18c4-1 8-5 8-10a8 8 0 00-4-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">New seasonal tip</div><div class="preview">Controlling Fall Armyworm in maize — from Achieng Grace, Senior Agronomist.</div><div class="ts">2 hours ago</div></div></div>
-          <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Call rated</div><div class="preview">Thanks for rating Okello James 5 ★ — your feedback helps other farmers.</div><div class="ts">Yesterday · 16:42</div></div></div>
+          <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Talk rated</div><div class="preview">Thanks for rating Okello James 5 ★ — your feedback helps other farmers.</div><div class="ts">Yesterday · 16:42</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="nb"><div class="title">Weather alert · Mpigi</div><div class="preview">Heavy rain expected Wed–Thu. Harvest coffee before Tuesday if possible.</div><div class="ts">Yesterday · 06:00</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">DAP fertilizer price drop</div><div class="preview">Now UGX 210,000/50kg at Mpigi, Butambala &amp; Gomba outlets.</div><div class="ts">Wed · 09:15</div></div></div>
         </div></div>
@@ -2297,7 +2302,7 @@
               </div>
               <div class="pc-foot">
                 <div class="pc-price">UGX 180,000<span style="font-size:9.5px;color:var(--ink-60);font-weight:500"> / day · fuel incl.</span></div>
-                <button class="btn primary small">Call</button>
+                <button class="btn primary small">Talk</button>
               </div>
             </div>
           </div>
@@ -2313,7 +2318,7 @@
               </div>
               <div class="pc-foot">
                 <div class="pc-price">UGX 160,000<span style="font-size:9.5px;color:var(--ink-60);font-weight:500"> / day + fuel</span></div>
-                <button class="btn primary small">Call</button>
+                <button class="btn primary small">Talk</button>
               </div>
             </div>
           </div>
@@ -2329,7 +2334,7 @@
               </div>
               <div class="pc-foot">
                 <div class="pc-price">UGX 175,000<span style="font-size:9.5px;color:var(--ink-60);font-weight:500"> / day · fuel incl.</span></div>
-                <button class="btn primary small">Call</button>
+                <button class="btn primary small">Talk</button>
               </div>
             </div>
           </div>
@@ -2368,13 +2373,13 @@
           <div class="review"><div class="rh"><span class="who">Nankya Justine · Masaka</span><span class="stars">★★★★★</span></div>Came on time and ploughed 3 acres in one afternoon. Fair price.</div>
           <div class="review"><div class="rh"><span class="who">Kato Ibrahim · Mpigi</span><span class="stars">★★★★☆</span></div>Good work on my maize garden. Had to remind him about the discount on second day.</div>
           <div class="pd-actions">
-            <button class="btn primary">Call now</button>
+            <button class="btn primary">Talk now</button>
             <button class="btn secondary" style="width:auto;padding:0 14px">WhatsApp</button>
           </div>
         </div></div>
         %%BNAV_HOME%%
       </div></div>
-      <div class="screen-caption">Photo gallery · specs grid · reviews from Ugandan farmers · Call + WhatsApp actions.</div>
+      <div class="screen-caption">Photo gallery · specs grid · reviews from Ugandan farmers · Talk + WhatsApp actions.</div>
     </div>
 
     <!-- Trace result -->
@@ -2639,72 +2644,84 @@
 
           <!-- Address card -->
           <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px">DELIVER TO</div>
-          <div class="card" style="padding:14px;margin-bottom:10px;border:1.5px solid var(--orange);background:#FFF4E4">
-            <div style="display:flex;gap:12px;align-items:flex-start">
-              <div style="width:36px;height:36px;border-radius:10px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 1114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <div class="card" style="padding:12px;margin-bottom:10px;border:1.5px solid var(--orange);background:#FFF4E4">
+            <div style="display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center">
+              <div style="width:32px;height:32px;border-radius:9px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 1114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
               </div>
-              <div style="flex:1;min-width:0">
-                <div style="font-size:12.5px;font-weight:800;color:var(--ink)">My farm · Kayabwe</div>
-                <div style="font-size:11px;color:var(--ink-60);margin-top:3px;line-height:1.45">200m from Nkozi Trading Centre, next to Kayabwe Primary School<br>Mpigi · Nkozi sub-county</div>
-                <div style="font-size:10.5px;color:var(--teal);margin-top:4px;font-weight:600">📞 Recipient: +256 772 456 123 (you)</div>
+              <div style="min-width:0">
+                <div style="font-size:12.5px;font-weight:800;color:var(--ink);line-height:1.2">My farm · Kayabwe</div>
+                <div style="font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.4">Mpigi · Nkozi sub-county</div>
               </div>
-              <button class="btn secondary" style="height:30px;font-size:11px;padding:0 12px;flex-shrink:0">Change</button>
+              <button class="btn secondary" style="height:28px;font-size:10.5px;padding:0 10px">Change</button>
+            </div>
+            <div style="font-size:10.5px;color:var(--ink-90);margin-top:8px;line-height:1.4;padding-left:42px">200m from Nkozi Trading Centre, next to Kayabwe Primary School</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--teal);margin-top:6px;font-weight:600;padding-left:42px">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <span>Recipient · +256 772 456 123 (you)</span>
             </div>
           </div>
 
           <!-- Stylised map -->
-          <div style="background:linear-gradient(135deg,#1f8a95 0%,#0D4751 100%);border-radius:12px;height:130px;position:relative;overflow:hidden;margin-bottom:14px">
+          <div style="background:linear-gradient(135deg,#1f8a95 0%,#0D4751 100%);border-radius:12px;height:120px;position:relative;overflow:hidden;margin-bottom:12px">
             <div style="position:absolute;inset:0;opacity:.25;background-image:linear-gradient(rgba(255,236,209,.35) 1px, transparent 1px),linear-gradient(90deg,rgba(255,236,209,.35) 1px, transparent 1px);background-size:24px 24px"></div>
             <!-- Outlet pin -->
-            <div style="position:absolute;left:24%;top:38%;color:#fff;text-align:center;z-index:2">
-              <div style="width:24px;height:24px;border-radius:50% 50% 50% 0;background:var(--teal);transform:rotate(-45deg);margin:0 auto;box-shadow:0 4px 8px rgba(0,21,36,.3);border:2px solid #fff"></div>
-              <div style="font-size:8.5px;font-weight:700;background:rgba(0,21,36,.6);padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">MPIGI TOWN</div>
+            <div style="position:absolute;left:22%;top:34%;text-align:center;z-index:2">
+              <div style="width:22px;height:22px;border-radius:50% 50% 50% 0;background:var(--teal);transform:rotate(-45deg);margin:0 auto;box-shadow:0 4px 8px rgba(0,21,36,.3);border:2px solid #fff"></div>
+              <div style="font-size:8px;font-weight:700;background:rgba(0,21,36,.6);color:#fff;padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">MPIGI TOWN</div>
             </div>
             <!-- Farmer pin (highlighted) -->
-            <div style="position:absolute;right:18%;top:54%;color:#fff;text-align:center;z-index:2">
-              <div style="width:30px;height:30px;border-radius:50% 50% 50% 0;background:var(--orange);transform:rotate(-45deg);margin:0 auto;box-shadow:0 6px 14px rgba(255,125,0,.5);border:2px solid #fff;position:relative"><div style="position:absolute;inset:9px;border-radius:50%;background:#fff;transform:rotate(45deg)"></div></div>
-              <div style="font-size:8.5px;font-weight:700;background:rgba(255,125,0,.85);padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">YOU · KAYABWE</div>
+            <div style="position:absolute;right:18%;top:48%;text-align:center;z-index:2">
+              <div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:var(--orange);transform:rotate(-45deg);margin:0 auto;box-shadow:0 6px 14px rgba(255,125,0,.5);border:2px solid #fff;position:relative"><div style="position:absolute;inset:8px;border-radius:50%;background:#fff;transform:rotate(45deg)"></div></div>
+              <div style="font-size:8px;font-weight:700;background:rgba(255,125,0,.9);color:#fff;padding:1px 5px;border-radius:3px;margin-top:4px;display:inline-block;letter-spacing:.04em">YOU · KAYABWE</div>
             </div>
             <!-- route line -->
-            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 340 130" preserveAspectRatio="none">
-              <path d="M85 60 Q 180 50 260 80" stroke="rgba(255,236,209,.7)" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
+            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 340 120" preserveAspectRatio="none">
+              <path d="M85 50 Q 180 40 260 70" stroke="rgba(255,236,209,.7)" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
             </svg>
-            <div style="position:absolute;bottom:8px;left:10px;background:rgba(0,21,36,.55);color:var(--cream);font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:4px;backdrop-filter:blur(4px)">📍 6.2 km from outlet · ~22 min boda</div>
+            <div style="position:absolute;bottom:8px;left:10px;background:rgba(0,21,36,.6);color:var(--cream);font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:4px;display:inline-flex;align-items:center;gap:4px">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 1114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              <span>6.2 km from outlet · ~22 min boda</span>
+            </div>
           </div>
 
           <!-- Price card · supported area -->
-          <div class="card" style="padding:14px;margin-bottom:10px;background:#E4F3F5;border:1.5px solid var(--teal)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div class="card" style="padding:12px 14px;margin-bottom:12px;background:#E4F3F5;border:1.5px solid var(--teal)">
+            <div style="display:grid;grid-template-columns:1fr 36px;gap:10px;align-items:center">
               <div>
-                <div style="font-size:10.5px;color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.05em">Boda fee for Kayabwe ✓ supported</div>
-                <div style="font-family:'Poppins';font-weight:800;font-size:22px;color:var(--ink);margin-top:4px;line-height:1">UGX 5,000</div>
-                <div style="font-size:10.5px;color:var(--ink-60);margin-top:3px">Same-day if you pay before 2pm · ETA 30–60 min after dispatch</div>
+                <div style="font-size:10px;color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.05em">Kayabwe · ✓ supported</div>
+                <div style="font-family:'Poppins';font-weight:800;font-size:22px;color:var(--ink);margin-top:2px;line-height:1.1">UGX 5,000</div>
+                <div style="font-size:10px;color:var(--ink-60);margin-top:3px;line-height:1.4">Same-day if you pay before 2pm · ETA 30–60 min</div>
               </div>
-              <div style="font-size:24px">🛵</div>
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="17" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="17" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M6 17h12M9 17l3-9h4l2 4M14 8h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
             </div>
           </div>
 
           <!-- Other areas in this zone -->
-          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:8px 0 8px">OTHER AREAS WE DELIVER TO · FROM MPIGI TOWN</div>
-          <div class="card" style="padding:0;margin-bottom:10px;overflow:hidden">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Nkozi Trading Centre <span style="color:var(--ink-60);font-size:10.5px">· 4.1 km</span></span><strong style="font-family:'Poppins'">UGX 3,000</strong></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px;background:#FFF4E4"><span style="font-weight:700;color:var(--ink)">Kayabwe <span style="color:var(--orange);font-size:10px">· you are here</span></span><strong style="font-family:'Poppins';color:var(--orange)">UGX 5,000</strong></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Buwama <span style="color:var(--ink-60);font-size:10.5px">· 12 km</span></span><strong style="font-family:'Poppins'">UGX 8,000</strong></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--ink-10);font-size:12px"><span>Kayabuwala <span style="color:var(--ink-60);font-size:10.5px">· 15 km</span></span><strong style="font-family:'Poppins'">UGX 10,000</strong></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 14px;font-size:12px"><span>Mityana road · 18 km <span style="color:var(--ink-60);font-size:10.5px">· edge of zone</span></span><strong style="font-family:'Poppins'">UGX 12,000</strong></div>
+          <div style="font-size:10.5px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:6px 0 8px">OTHER AREAS · FROM MPIGI TOWN</div>
+          <div class="card" style="padding:0;margin-bottom:12px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:9px 12px;border-bottom:1px solid var(--ink-10);font-size:11.5px;align-items:center"><span>Nkozi Trading Centre</span><span style="color:var(--ink-60);font-size:10px">4.1 km</span><strong style="font-family:'Poppins'">UGX 3,000</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:9px 12px;border-bottom:1px solid var(--ink-10);font-size:11.5px;align-items:center;background:#FFF4E4"><span style="font-weight:700;color:var(--ink)">Kayabwe</span><span style="color:var(--orange);font-size:10px;font-weight:600">you are here</span><strong style="font-family:'Poppins';color:var(--orange)">UGX 5,000</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:9px 12px;border-bottom:1px solid var(--ink-10);font-size:11.5px;align-items:center"><span>Buwama</span><span style="color:var(--ink-60);font-size:10px">12 km</span><strong style="font-family:'Poppins'">UGX 8,000</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:9px 12px;border-bottom:1px solid var(--ink-10);font-size:11.5px;align-items:center"><span>Kayabuwala</span><span style="color:var(--ink-60);font-size:10px">15 km</span><strong style="font-family:'Poppins'">UGX 10,000</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:9px 12px;font-size:11.5px;align-items:center"><span>Mityana road</span><span style="color:var(--ink-60);font-size:10px">edge of zone</span><strong style="font-family:'Poppins'">UGX 12,000</strong></div>
           </div>
 
           <!-- Unsupported / call fallback -->
-          <div style="background:rgba(120,41,15,.06);border:1.5px dashed var(--rust);border-radius:12px;padding:12px 14px;margin-bottom:14px">
-            <div style="display:flex;gap:10px;align-items:flex-start">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color:var(--rust);flex-shrink:0;margin-top:2px"><path d="M12 3l9 17H3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              <div style="flex:1">
+          <div style="background:rgba(120,41,15,.06);border:1.5px dashed var(--rust);border-radius:12px;padding:12px;margin-bottom:14px">
+            <div style="display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color:var(--rust);margin-top:1px"><path d="M12 3l9 17H3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div>
                 <div style="font-size:12px;font-weight:800;color:var(--rust)">Don't see your area?</div>
-                <div style="font-size:11px;color:var(--ink-90);line-height:1.5;margin-top:2px">If your village is beyond our usual zone or isn't listed, call Mpigi Town outlet — they'll quote a custom rate or arrange a meet-point at the nearest trading centre.</div>
-                <button class="btn primary" style="margin-top:10px;width:auto;padding:0 16px;height:36px">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
-                  Call Mpigi Town · +256 414 223 045
+                <div style="font-size:10.5px;color:var(--ink-90);line-height:1.5;margin-top:3px">If your village is beyond our zone, call Mpigi Town outlet for a custom rate or a meet-point.</div>
+                <button class="btn primary" style="margin-top:10px;width:100%;height:auto;padding:8px 12px;font-size:12px;display:flex;align-items:center;justify-content:center;gap:8px;line-height:1.25">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  <div style="text-align:left">
+                    <div style="font-weight:700">Call Mpigi Town</div>
+                    <div style="font-size:10.5px;font-weight:500;opacity:.85;font-family:monospace;letter-spacing:.02em;margin-top:1px">+256 414 223 045</div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -3005,7 +3022,7 @@
             <div class="adv-tile">
               <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0116 0"/><path d="M6 14h2l1 4H5l1-4zM16 14h2l1 4h-4l1-4z"/></svg></div>
               <div class="tn">Talk to an Expert</div>
-              <div class="td">Call a Field Officer now</div>
+              <div class="td">Talk to a Field Officer now</div>
             </div>
             <div class="adv-tile">
               <span class="bg-badge">24/7</span>
@@ -3175,7 +3192,7 @@
           <div class="info-row"><span class="k">Typical response</span><span class="v">Under 2 minutes</span></div>
 
           <div style="display:flex;gap:8px;margin-top:auto;padding-top:14px">
-            <button class="btn primary">Call now</button>
+            <button class="btn primary">Talk now</button>
             <button class="btn secondary" style="width:auto;padding:0 14px">WhatsApp</button>
           </div>
         </div></div>
@@ -3184,9 +3201,9 @@
       <div class="screen-caption">Tap an officer card to see full credentials · university + graduation year · certifications · "Verified by Agro and More HQ" tick · coverage districts · response time.</div>
     </div>
 
-    <!-- 4. CALL CONFIRMATION BOTTOM SHEET -->
+    <!-- 4. TALK CONFIRMATION BOTTOM SHEET -->
     <div>
-      <div class="screen-label"><span class="num">04</span>Call Confirmation Sheet</div>
+      <div class="screen-label"><span class="num">04</span>Talk Confirmation Sheet</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -3217,12 +3234,12 @@
             <div class="ring">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Call Okello James?</h3>
-            <div class="p">A standard call charge from your network applies. After the call we'll ask you to rate the consultation.</div>
+            <h3>Talk to Okello James?</h3>
+            <div class="p">A standard call charge from your network applies. After the conversation we'll ask you to rate it.</div>
             <div class="num">+256 772 456 123</div>
             <div style="display:flex;gap:8px">
               <button class="btn secondary">Cancel</button>
-              <button class="btn primary">Call now</button>
+              <button class="btn primary">Talk now</button>
             </div>
           </div>
         </div>
@@ -3231,9 +3248,9 @@
       <div class="screen-caption">Bottom sheet slides over the directory · orange ring pulses · shows officer's number before dialling.</div>
     </div>
 
-    <!-- 5. POST-CALL RATING MODAL -->
+    <!-- 5. POST-TALK RATING MODAL -->
     <div>
-      <div class="screen-label"><span class="num">05</span>Post-call Rating</div>
+      <div class="screen-label"><span class="num">05</span>Post-talk Rating</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -3249,7 +3266,7 @@
           <div class="dimmed-bg"></div>
           <div class="modal">
             <div class="ava-md">OJ</div>
-            <h3>How was your call with Okello James?</h3>
+            <h3>How was your talk with Okello James?</h3>
             <div class="p">Your rating stays private · only the average is shown.</div>
             <div class="stars">
               <span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span>
@@ -3263,7 +3280,7 @@
         </div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">Auto-prompted after the call ends · 5 tappable stars · optional comment · Luganda allowed.</div>
+      <div class="screen-caption">Auto-prompted after the conversation ends · 5 tappable stars · optional comment · Luganda allowed.</div>
     </div>
 
     <!-- 6. VIDEOS + RADIO -->
@@ -3535,7 +3552,7 @@
         </div></div>
         %%BNAV_SELL%%
       </div></div>
-      <div class="screen-caption">Three sections · regional toggle · trend arrows on each crop · off-takers with Call &amp; WhatsApp.</div>
+      <div class="screen-caption">Three sections · regional toggle · trend arrows on each crop · off-takers with Talk + WhatsApp.</div>
     </div>
 
     <!-- 2. PRICE DETAIL -->
@@ -3694,7 +3711,7 @@
         </div></div>
         %%BNAV_SELL%%
       </div></div>
-      <div class="screen-caption">Crop filter chips top · six representative Ugandan off-takers · Call + WhatsApp on each.</div>
+      <div class="screen-caption">Crop filter chips top · six representative Ugandan off-takers · Talk + WhatsApp on each.</div>
     </div>
 
     <!-- 4. OFF-TAKER DETAIL -->
@@ -3741,7 +3758,7 @@
           </div>
 
           <div style="display:flex;gap:8px;margin-top:auto;padding-top:14px">
-            <button class="btn primary">Call +256 414 …</button>
+            <button class="btn primary">Talk to +256 414 …</button>
             <button class="btn secondary" style="width:auto;padding:0 14px;background:#25D36610;color:#25D366;border-color:#25D366">WhatsApp</button>
           </div>
 
@@ -3908,7 +3925,7 @@
           <div class="prof-stats">
             <div class="prof-stat"><div class="k">Jan '26</div><div class="kl">Member since</div></div>
             <div class="prof-stat"><div class="k">12</div><div class="kl">Orders placed</div></div>
-            <div class="prof-stat"><div class="k">8</div><div class="kl">Calls to experts</div></div>
+            <div class="prof-stat"><div class="k">8</div><div class="kl">Talks with experts</div></div>
           </div>
 
           <!-- Identity list -->
@@ -4283,16 +4300,7 @@
 
           <div class="about-hero">
             <div class="svg-wrap">
-              <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 78 Q 18 60, 30 30 Q 55 12, 88 30 Q 102 52, 88 76 Q 72 90, 50 78 Z" fill="#7CC04A"/>
-                <path d="M72 50 Q 56 20, 78 6 Q 104 0, 116 22 Q 118 46, 100 58 Q 82 62, 72 50 Z" fill="#1F8A3A"/>
-                <text x="60" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#1F8A3A" font-style="italic" letter-spacing="-2">ag</text>
-                <text x="152" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#1F8A3A" font-style="italic" letter-spacing="-2">m</text>
-                <circle cx="222" cy="93" r="20" fill="#FF7D00"/>
-                <path d="M218 84 Q 214 90, 218 98 Q 224 96, 226 90 Q 224 85, 218 84 Z" fill="#1F8A3A"/>
-                <text x="245" y="122" font-family="Fredoka, Poppins, sans-serif" font-weight="700" font-size="76" fill="#E94E1B" font-style="italic" letter-spacing="-2">re</text>
-                <text x="260" y="150" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#FF7D00" font-style="italic">kisoboka...</text>
-              </svg>
+              <img src="brand/agmore-wordmark.png" alt="agmore · kisoboka" style="width:200px;height:auto;display:block;margin:0 auto">
             </div>
             <h2>Agro and More</h2>
             <div class="ver">VERSION 1.0.2 · BUILD 128</div>
@@ -5190,7 +5198,7 @@
             </div>
             <div class="set-row">
               <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 4-2 2a11 11 0 006 6l2-2 4 2v4c0 1-1 2-2 2A17 17 0 012 6c0-1 1-2 2-2z"/></svg></div>
-              <div class="lb"><div class="t">Call or WhatsApp him</div><div class="st">Walk him through the app</div></div>
+              <div class="lb"><div class="t">Talk to or WhatsApp him</div><div class="st">Walk him through the app</div></div>
               <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
           </div>
@@ -5577,7 +5585,7 @@
 <section id="sec-fo" class="tab-section">
   <div class="section-intro">
     <h2>Field Officer Journey (role-specific flows)</h2>
-    <p>Signed in as <strong>Okello James</strong> · Field Officer · Butambala district · Coffee &amp; Cocoa specialist · 4.7★ average rating · covers Butambala, Mpigi, Gomba. Flow covers: FO home with today's visit schedule, the Advisory Dashboard with rating distribution and trend, Log Farm Visit (the core FO task) with GPS lock + the rural GPS-unavailable fallback, past visits list and detail (with a stylised map tile), the Calls &amp; Ratings log showing farmer feedback, and the Availability toggle that controls whether Okello appears in the Talk to an Expert directory.</p>
+    <p>Signed in as <strong>Okello James</strong> · Field Officer · Butambala district · Coffee &amp; Cocoa specialist · 4.7★ average rating · covers Butambala, Mpigi, Gomba. Flow covers: FO home with today's visit schedule, the Advisory Dashboard with rating distribution and trend, Log Farm Visit (the core FO task) with GPS lock + the rural GPS-unavailable fallback, past visits list and detail (with a stylised map tile), the Talks &amp; Ratings log showing farmer feedback, and the Availability toggle that controls whether Okello appears in the Talk to an Expert directory.</p>
   </div>
   <div class="grid">
 
@@ -6158,7 +6166,7 @@
           </div>
 
           <div style="display:flex;gap:8px;margin-top:14px">
-            <button class="btn primary">Call Namutebi</button>
+            <button class="btn primary">Talk to Namutebi</button>
             <button class="btn secondary" style="width:auto;padding:0 14px">Edit</button>
           </div>
 
@@ -6168,14 +6176,14 @@
       <div class="screen-caption">Map tile with orange pin · full observations + advice · photo gallery · past-visits card · NEW teal "Request rating" prompt if the farmer hasn't rated yet.</div>
     </div>
 
-    <!-- 7. CALLS & RATINGS LOG -->
+    <!-- 7. TALKS & RATINGS LOG -->
     <div>
-      <div class="screen-label"><span class="num">08</span>Calls &amp; Ratings Log</div>
+      <div class="screen-label"><span class="num">08</span>Talks &amp; Ratings Log</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Calls &amp; Ratings
+          Talks &amp; Ratings
           <div class="actions"><span class="fo-badge">OFFICER</span></div>
         </div>
         <div class="content"><div class="scroll">
@@ -6499,7 +6507,7 @@
 
           <div class="quick-grid">
             <div class="quick disabled-quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 016 0v2" stroke-linecap="round"/></svg></div><div class="qn">Shop inputs</div><div class="qd">Needs internet</div></div>
-            <div class="quick disabled-quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke-linecap="round"/></svg></div><div class="qn">Call an expert</div><div class="qd">Needs internet</div></div>
+            <div class="quick disabled-quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke-linecap="round"/></svg></div><div class="qn">Talk to an expert</div><div class="qd">Needs internet</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V5M16 8V5M4 12h16" stroke-linecap="round"/></svg></div><div class="qn">Cached prices</div><div class="qd" style="color:var(--teal);font-weight:700">Available</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l6 3-6 3z" fill="currentColor" stroke="none"/></svg></div><div class="qn">Saved videos</div><div class="qd" style="color:var(--teal);font-weight:700">3 offline</div></div>
           </div>
@@ -6528,7 +6536,7 @@
         </div></div>
         %%BNAV_HOME%%
       </div></div>
-      <div class="screen-caption">Rust offline banner with Luganda translation · cached weather + tip readable · disabled Shop &amp; Call-expert tiles with reason.</div>
+      <div class="screen-caption">Rust offline banner with Luganda translation · cached weather + tip readable · disabled Shop &amp; Talk-to-expert tiles with reason.</div>
     </div>
 
     <!-- 4. OUT OF STOCK AT CHECKOUT -->
@@ -6854,9 +6862,9 @@
       <div class="screen-caption">Rust order hero · admin's reject reason (attributed to Kato Ibrahim) · re-upload checklist · 22-hour countdown before auto-cancel.</div>
     </div>
 
-    <!-- 10. FARMER · EXPERT CALL FAILED -->
+    <!-- 10. FARMER · EXPERT TALK FAILED -->
     <div>
-      <div class="screen-label"><span class="num">10</span>Farmer · Expert Call Failed</div>
+      <div class="screen-label"><span class="num">10</span>Farmer · Expert Talk Failed</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -7017,7 +7025,7 @@
             </div>
 
             <div style="display:flex;gap:8px">
-              <button class="btn secondary">Call Nankya</button>
+              <button class="btn secondary">Talk to Nankya</button>
               <button class="btn primary">Pick another customer</button>
             </div>
           </div>
@@ -7078,7 +7086,7 @@
           <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px">PENDING SYNC · 3 items</div>
           <div class="order-card" style="padding:10px"><div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px"><span>Visit log · Namutebi Agnes</span><span class="chip orange">Ready</span></div></div>
           <div class="order-card" style="padding:10px"><div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px"><span>2 photos · 3.4 MB</span><span class="chip orange">Ready</span></div></div>
-          <div class="order-card" style="padding:10px"><div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px"><span>Call rating · Nakato 5★</span><span class="chip orange">Ready</span></div></div>
+          <div class="order-card" style="padding:10px"><div style="display:flex;justify-content:space-between;align-items:center;font-size:11.5px"><span>Talk rating · Nakato 5★</span><span class="chip orange">Ready</span></div></div>
 
           <div class="tips-card">
             <div class="th">TO GET SIGNAL FASTER</div>
@@ -7804,7 +7812,7 @@
             <div class="rc-top" style="margin-bottom:0">
               <div class="ava-rc" style="background:var(--orange)">NS</div>
               <div class="rc-info"><div class="rc-name">Namutebi Sarah</div><div class="rel">Sister · Mpigi Town pickup</div></div>
-              <span style="color:var(--teal);font-size:11px;font-weight:700">Call</span>
+              <span style="color:var(--teal);font-size:11px;font-weight:700">Talk</span>
             </div>
           </div>
 
@@ -8084,6 +8092,17 @@
       btn.disabled = false;
       label.textContent = original;
     }
+  }
+</script>
+
+<script>
+  // PWA · register service worker so the app is installable
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').catch((err) => {
+        console.warn('Service worker registration failed:', err);
+      });
+    });
   }
 </script>
 
