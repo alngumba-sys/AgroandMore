@@ -238,8 +238,18 @@
   }
   .splash .logo-svg{width:260px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12));position:relative;z-index:2}
   .splash .powered{
-    margin-top:38px;font-size:10.5px;color:var(--ink);opacity:.5;
-    letter-spacing:.2em;text-transform:uppercase;font-weight:600;position:relative;z-index:2;
+    margin-top:30px;
+    font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;
+    color:var(--ink);line-height:1.18;letter-spacing:-0.01em;
+    text-align:center;padding:0 24px;position:relative;z-index:2;
+    animation:splash-fade-in .55s ease-out .15s both;
+  }
+  .splash .accent-line{
+    margin:14px auto 0;height:3px;width:0;
+    border-radius:2px;background:#C44600;
+    position:relative;z-index:2;
+    box-shadow:0 0 14px rgba(196,70,0,.45);
+    animation:splash-line 2.4s ease-in-out infinite;
   }
   .splash .loader{
     position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
@@ -251,6 +261,16 @@
     border-radius:2px;animation:slide 1.6s ease-in-out infinite;
   }
   @keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+  @keyframes splash-fade-in{
+    from{opacity:0;transform:translateY(8px)}
+    to  {opacity:1;transform:translateY(0)}
+  }
+  @keyframes splash-line{
+    0%   {width:0;     opacity:0}
+    18%  {width:160px; opacity:1}
+    62%  {width:160px; opacity:1}
+    100% {width:0;     opacity:0}
+  }
 
   /* ========================= ONBOARDING CAROUSEL ========================= */
   .carousel{display:flex;flex-direction:column;height:100%;background:var(--cream)}
@@ -1784,8 +1804,9 @@
       <div class="phone"><div class="screen">
         <div class="splash">
           <div class="pattern"></div>
-          <img class="logo-svg" src="brand/agmore-full.png" alt="Agro and More — Agribusiness Developers Ltd" style="width:260px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12))">
-          <div class="powered">Agri-Business Developers Ltd</div>
+          <img class="logo-svg" src="brand/agmore-full.png" alt="Agro and More — Empowering Agri-Business in Uganda" style="width:260px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12))">
+          <div class="powered">Empowering Agri-Business in Uganda</div>
+          <div class="accent-line"></div>
           <div class="loader"></div>
         </div>
       </div></div>
