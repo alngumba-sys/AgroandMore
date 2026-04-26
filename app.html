@@ -8404,81 +8404,389 @@
     }).observe(slide, { attributes: true, attributeFilter: ['class'] });
   });
 
-  // Home → quick actions
-  wireCTA('home-1', /shop|order/i,                      'shop-1');
-  wireCTA('home-1', /talk|expert|advisor/i,             'advisory-1');
-  wireCTA('home-1', /sell|produce|prices/i,             'sell-1');
-  wireCTA('home-1', /trace/i,                           'home-8');
-  wireCTA('home-1', /weather/i,                         'home-3');
-  wireCTA('home-1', /hire|tractor/i,                    'home-5');
-  wireCTA('home-1', /notification|bell/i,               'home-2');
+  // ====================== HOME TAB · precise selector wiring ======================
+  // Helper: tag elements with data-proto-go using a CSS selector inside a screen.
+  function tag(screenId, selector, target, indexOrAll) {
+    const slide = screenMap[screenId];
+    if (!slide) return;
+    const els = slide.querySelectorAll(selector);
+    if (typeof indexOrAll === 'number') {
+      const el = els[indexOrAll];
+      if (el && !el.dataset.protoGo) el.dataset.protoGo = target;
+    } else {
+      els.forEach(el => { if (!el.dataset.protoGo) el.dataset.protoGo = target; });
+    }
+  }
 
-  // For-Hire chain
-  wireCTA('home-5', /tractor|plough|spray/i,            'home-6');
-  wireCTA('home-6', /detail|view|book/i,                'home-7');
+  // ---- Home · Dashboard (home-1) ----
+  tag('home-1', '.bell',                          'home-2');         // bell icon → notifications
+  tag('home-1', '.avatar',                        'profile-1');      // avatar circle → profile
+  tag('home-1', '.weather-card',                  'home-3');         // weather card → weather detail
+  tag('home-1', '.tip-card',                      'home-4');         // seasonal tip → tip detail
+  tag('home-1', '.quick-grid .quick', 'shop-1',     0);              // Shop inputs
+  tag('home-1', '.quick-grid .quick', 'advisory-1', 1);              // Talk to an expert
+  tag('home-1', '.quick-grid .quick', 'sell-1',     2);              // Today's prices
+  tag('home-1', '.quick-grid .quick', 'home-5',     3);              // Hire a tractor
+  tag('home-1', '.trace-card .trace-input button','home-8');         // Trace button → result
 
-  // Shop chain
-  wireCTA('shop-1', /crop protection|fertilizer|seed|pest/i, 'shop-2');
-  wireCTA('shop-2', /add to cart|cart|checkout/i,       'shop-3');
-  wireCTA('shop-3', /proceed|pay|continue/i,            'shop-4');
-  wireCTA('shop-4', /confirm|continue/i,                'shop-5');
-  wireCTA('shop-5', /place order|pay/i,                 'shop-6');
-  wireCTA('shop-6', /track order|view order/i,          'shop-7');
-  wireCTA('shop-7', /detail|order/i,                    'shop-8');
+  // ---- Notifications (home-2) — back arrow handles return ----
+  // Tap any notification row → just stays for the prototype demo
 
-  // Advisory chain
-  wireCTA('advisory-1', /talk|expert/i,                 'advisory-2');
-  wireCTA('advisory-1', /video|radio/i,                 'advisory-6');
-  wireCTA('advisory-1', /agrobot|whatsapp/i,            'advisory-7');
-  wireCTA('advisory-2', /okello|achieng|nakato|profile|view/i, 'advisory-3');
-  wireCTA('advisory-3', /talk|now|call/i,               'advisory-4');
-  wireCTA('advisory-4', /talk|now|call/i,               'advisory-5');
-  wireCTA('advisory-5', /submit|done|skip/i,            'advisory-1');
+  // ---- For Hire · Categories (home-5) ----
+  tag('home-5', '.hire-cat',                      'home-6');         // any category → tractor providers list
+                                                                     // (we only show one category populated; others reuse same screen)
 
-  // Sell My Produce chain
-  wireCTA('sell-1', /matooke|coffee|avocado|bean/i,     'sell-2');
-  wireCTA('sell-1', /off-?taker|buyer|directory/i,      'sell-3');
-  wireCTA('sell-2', /off-?taker|view|sell/i,            'sell-3');
-  wireCTA('sell-3', /khamisa|kyagalanyi|mukwano|aponye|olam|nucafe|view|profile/i, 'sell-4');
-  wireCTA('sell-4', /trace|batch/i,                     'sell-5');
+  // ---- For Hire · Provider list (home-6) ----
+  tag('home-6', '.provider-card',                 'home-7');         // tap card → provider detail
+  // Note: each card has a "Talk" button inside. We don't wire Talk to anything in the prototype
+  // (would need a phone-call confirmation screen we don't have). Tapping the card itself navigates.
 
-  // Profile chain
-  wireCTA('profile-1', /edit profile/i,                 'profile-2');
-  wireCTA('profile-1', /pickup|address/i,               'profile-3');
-  wireCTA('profile-1', /notification/i,                 'profile-4');
-  wireCTA('profile-1', /language|luganda/i,             'profile-5');
-  wireCTA('profile-1', /help|support/i,                 'profile-6');
-  wireCTA('profile-1', /about/i,                        'profile-7');
-  wireCTA('profile-1', /log ?out|sign ?out/i,           'profile-8');
-  wireCTA('profile-8', /confirm|yes|log/i,              'onboarding-3');
+  // ---- Provider Detail (home-7) — back arrow returns to home-6 ----
+  // "Talk now" / "WhatsApp" stay where they are (no nav target)
 
-  // Agent flows
-  wireCTA('agent-1', /place order/i,                    'agent-flows-1');
-  wireCTA('agent-1', /customer|farmer/i,                'agent-flows-5');
-  wireCTA('agent-2', /detail|view/i,                    'agent-8');
-  wireCTA('agent-flows-1', /register|continue/i,        'agent-flows-2');
-  wireCTA('agent-flows-2', /continue|verify|submit/i,   'agent-flows-3');
-  wireCTA('agent-flows-3', /verify|continue/i,          'agent-flows-4');
-  wireCTA('agent-flows-4', /done|continue/i,            'agent-1');
-  wireCTA('agent-flows-5', /nakato|kato|customer|view/i, 'agent-flows-6');
+  // ====================== SHOP TAB · precise selector wiring ======================
 
-  // Field Officer flows
-  wireCTA('fo-2', /log visit|new visit/i,               'fo-4');
-  wireCTA('fo-2', /my visits|visits/i,                  'fo-6');
-  wireCTA('fo-4', /save|submit|continue/i,              'fo-6');
-  wireCTA('fo-6', /detail|view/i,                       'fo-7');
-  wireCTA('fo-3', /talks|ratings/i,                     'fo-8');
+  // ---- Shop · Categories (shop-1) ----
+  // The cart icon at top right of app-bar
+  tag('shop-1', '.app-bar .actions svg',          'shop-3');
+  // Category cards — all route to the Crop Protection list (shop-2) since that's our populated example
+  tag('shop-1', '.cat-card',                      'shop-2');
 
-  // Diaspora flows
-  wireCTA('diaspora-1', /shop|order/i,                  'diaspora-4');
-  wireCTA('diaspora-1', /recipient/i,                   'diaspora-2');
-  wireCTA('diaspora-1', /order/i,                       'diaspora-8');
-  wireCTA('diaspora-2', /add recipient|new recipient/i, 'diaspora-3');
-  wireCTA('diaspora-3', /save|continue|done/i,          'diaspora-2');
-  wireCTA('diaspora-4', /coffee|matooke|avocado|product/i, 'diaspora-5');
-  wireCTA('diaspora-5', /add to cart|checkout|continue/i,  'diaspora-6');
-  wireCTA('diaspora-6', /pay|place order|confirm/i,        'diaspora-7');
-  wireCTA('diaspora-7', /track|view/i,                     'diaspora-8');
+  // ---- Shop · Crop Protection list (shop-2) ----
+  // Sticky bottom "Next ... UGX 89,000" button → cart
+  tag('shop-2', '.sticky-foot button',            'shop-3');
+  // Filter icon top-right, plus product rows themselves don't navigate
+  // The qty steppers (-/+) inside product rows are plain buttons — they don't have proto-go,
+  // so they won't trigger navigation.
+
+  // ---- Cart (shop-3) ----
+  // Override generic "Proceed to Pay" matcher — wire it precisely to the sticky-foot CTA
+  tag('shop-3', '.sticky-foot button, .btn.primary', 'shop-4');
+
+  // ---- Boda Delivery (shop-4) ----
+  // The big primary button at the bottom: "Confirm address & continue"
+  tag('shop-4', '.btn.primary',                   'shop-5');
+
+  // ---- Checkout · Mobile Money (shop-5) ----
+  // Sticky-foot "Place Order"
+  tag('shop-5', '.sticky-foot button, .btn.primary', 'shop-6');
+
+  // ---- Order Confirmation (shop-6) ----
+  tag('shop-6', '.btn.primary',                   'shop-7');         // Track Order
+  tag('shop-6', '.btn.secondary',                 'shop-1');         // Keep Shopping
+
+  // ---- My Orders (shop-7) ----
+  tag('shop-7', '.order-card',                    'shop-8');         // tap any order → detail
+
+  // ---- Order Detail (shop-8) — back arrow returns to shop-7 ----
+
+  // ====================== ADVISORY TAB · precise selector wiring ======================
+
+  // ---- Advisory · Landing (advisory-1) ----
+  // 4 entry tiles: Talk to Expert | Ask AgroBot | Must-Watch Videos | Radio Recordings
+  tag('advisory-1', '.adv-tile', 'advisory-2', 0);   // Talk to an Expert
+  tag('advisory-1', '.adv-tile', 'advisory-7', 1);   // Ask AgroBot
+  tag('advisory-1', '.adv-tile', 'advisory-6', 2);   // Must-Watch Videos
+  tag('advisory-1', '.adv-tile', 'advisory-6', 3);   // Radio Recordings (same page as videos)
+  tag('advisory-1', '.tip-card',                  'advisory-2');   // Featured tip → expert directory
+  tag('advisory-1', '.bell',                      'home-2');
+  tag('advisory-1', '.avatar',                    'profile-1');
+
+  // ---- Talk to an Expert · Directory (advisory-2) ----
+  tag('advisory-2', '.officer-card',              'advisory-3');   // tap any officer → profile
+
+  // ---- Officer Profile (advisory-3) ----
+  // Primary "Talk now" → talk confirmation sheet
+  tag('advisory-3', '.btn.primary',               'advisory-4');
+  // (WhatsApp button stays — no in-app destination)
+
+  // ---- Talk Confirmation Sheet (advisory-4) ----
+  // The sheet has 2 buttons: secondary "Cancel" + primary "Talk now"
+  tag('advisory-4', '.sheet .btn.primary',        'advisory-5');   // Talk now → post-talk rating
+  tag('advisory-4', '.sheet .btn.secondary',      'advisory-2');   // Cancel → back to directory
+
+  // ---- Post-talk Rating (advisory-5) ----
+  tag('advisory-5', '.modal .btn.primary',        'advisory-1');   // Submit Rating → back home
+  tag('advisory-5', '.modal .btn.secondary',      'advisory-1');   // Skip → back home
+
+  // ---- Videos & Radio (advisory-6) ----
+  // Each .media-card represents an "open in player" tap — would open external in real app.
+  // For the prototype, we leave them un-wired (so taps don't go anywhere unexpected).
+  // Back arrow returns to advisory-1.
+
+  // ---- Ask AgroBot (advisory-7) ----
+  // Just an info screen. Back arrow returns to advisory-1.
+
+  // ====================== SELL MY PRODUCE TAB · precise selector wiring ======================
+
+  // ---- Sell My Produce · Landing (sell-1) ----
+  tag('sell-1', '.bell',                          'home-2');
+  tag('sell-1', '.avatar',                        'profile-1');
+  tag('sell-1', '.price-row',                     'sell-2');       // any crop price row → price detail
+  tag('sell-1', '.ot-card',                       'sell-4');       // any off-taker card → off-taker profile
+  // The "See all · 12 ›" action link goes to the full directory
+  tag('sell-1', '.smp-section .action',           'sell-3');
+  // Trace button on the bottom card
+  tag('sell-1', '.trace-card .trace-input button','sell-5');
+
+  // ---- Price Detail · Matooke (sell-2) ----
+  // Back arrow to sell-1 (already wired). The "🪶 Share via WhatsApp" button stays put.
+
+  // ---- Off-takers · Full Directory (sell-3) ----
+  tag('sell-3', '.ot-card',                       'sell-4');       // tap any off-taker → profile
+  tag('sell-3', '.otaker-card',                   'sell-4');       // alternate class name
+
+  // ---- Off-taker Profile (sell-4) ----
+  // Has a primary CTA "Talk to +256 ..." which we leave un-wired (no nav target)
+  // Back arrow returns to sell-3.
+
+  // ---- Trace screens (sell-5/6/7) — back arrows return where the user came from ----
+
+  // ====================== PROFILE TAB · precise selector wiring ======================
+
+  // ---- Profile · Landing (profile-1) ----
+  if (screenMap['profile-1']) {
+    const p1 = screenMap['profile-1'];
+    p1.querySelector('.edit-btn')?.setAttribute('data-proto-go', 'profile-2');
+    p1.querySelector('.bell')?.setAttribute('data-proto-go', 'home-2');
+    // Map each .set-row to the right destination based on its label text
+    p1.querySelectorAll('.set-row').forEach(row => {
+      const t = (row.querySelector('.t')?.textContent || '').toLowerCase().trim();
+      if (t === 'edit profile')                   row.dataset.protoGo = 'profile-2';
+      else if (t.includes('pickup') || t.includes('address'))
+                                                  row.dataset.protoGo = 'profile-3';
+      else if (t === 'notifications')             row.dataset.protoGo = 'profile-4';
+      else if (t === 'language')                  row.dataset.protoGo = 'profile-5';
+      else if (t.includes('help'))                row.dataset.protoGo = 'profile-6';
+      else if (t.includes('about'))               row.dataset.protoGo = 'profile-7';
+      else if (t.includes('log out') || t.includes('sign out'))
+                                                  row.dataset.protoGo = 'profile-8';
+      // "Privacy & Security" intentionally has no destination (no separate screen)
+    });
+  }
+
+  // ---- Edit Profile (profile-2) ----
+  // "Save" button in app-bar (top-right) — wire it
+  if (screenMap['profile-2']) {
+    const p2 = screenMap['profile-2'];
+    p2.querySelectorAll('.app-bar .actions span, .app-bar .actions').forEach(el => {
+      if (/save/i.test(el.textContent || '')) el.dataset.protoGo = 'profile-1';
+    });
+    // The big Save Changes button at bottom
+    tag('profile-2', '.btn.primary',              'profile-1');
+  }
+
+  // ---- Pickup Outlet & Addresses (profile-3) ----
+  // Most controls are list rows — back arrow handles return
+  // The primary "Save" button at the bottom (if any) returns to profile-1
+  tag('profile-3', '.btn.primary',                'profile-1');
+
+  // ---- Notification Preferences (profile-4) ----
+  tag('profile-4', '.btn.primary',                'profile-1');
+
+  // ---- Language (profile-5) ----
+  tag('profile-5', '.btn.primary',                'profile-1');
+
+  // ---- Help & Support (profile-6) ----
+  // Tappable contact cards (Call / WhatsApp / Email) stay in place — no nav targets
+
+  // ---- About (profile-7) ----
+  // Just info — back arrow handles return
+
+  // ---- Log Out Confirmation (profile-8) ----
+  if (screenMap['profile-8']) {
+    const p8 = screenMap['profile-8'];
+    // Confirm log out → back to role selection (so user can sign in as another role)
+    tag('profile-8', '.btn.primary, .btn[style*="rust"]',     'onboarding-3');
+    // Cancel button stays in profile (or goes back)
+    p8.querySelectorAll('.btn.secondary').forEach(btn => {
+      btn.dataset.protoGo = 'profile-1';
+    });
+  }
+
+  // ====================== AGENT TAB · precise selector wiring ======================
+
+  // ---- Agent · Home Dashboard (agent-1) ----
+  tag('agent-1', '.bell',                         'home-2');
+  tag('agent-1', '.avatar',                       'profile-1');
+  // 4 quick tiles
+  tag('agent-1', '.quick-grid .quick', 'agent-6', 0);    // Order for a farmer
+  tag('agent-1', '.quick-grid .quick', 'agent-2', 1);    // My orders
+  tag('agent-1', '.quick-grid .quick', 'agent-3', 2);    // My performance
+  tag('agent-1', '.quick-grid .quick', 'agent-4', 3);    // Leaderboard
+  // Rank snapshot card
+  tag('agent-1', '.kpi-strip',                    'agent-3');        // tap KPI strip → performance
+
+  // ---- My Business · Orders (agent-2) ----
+  // Top segmented control: Orders / Performance / Leaderboard
+  if (screenMap['agent-2']) {
+    const a2 = screenMap['agent-2'];
+    const segs = a2.querySelectorAll('.seg-agent .so');
+    if (segs[1]) segs[1].dataset.protoGo = 'agent-3';
+    if (segs[2]) segs[2].dataset.protoGo = 'agent-4';
+  }
+  tag('agent-2', '.agent-order-card',             'agent-8');
+  tag('agent-2', '.fab',                          'agent-6');        // FAB Order for farmer
+
+  // ---- My Business · Performance (agent-3) ----
+  if (screenMap['agent-3']) {
+    const a3 = screenMap['agent-3'];
+    const segs = a3.querySelectorAll('.seg-agent .so');
+    if (segs[0]) segs[0].dataset.protoGo = 'agent-2';
+    if (segs[2]) segs[2].dataset.protoGo = 'agent-4';
+  }
+
+  // ---- My Business · Leaderboard (agent-4) ----
+  if (screenMap['agent-4']) {
+    const a4 = screenMap['agent-4'];
+    const segs = a4.querySelectorAll('.seg-agent .so');
+    if (segs[0]) segs[0].dataset.protoGo = 'agent-2';
+    if (segs[1]) segs[1].dataset.protoGo = 'agent-3';
+  }
+  // Footer "Commission Report" link → agent-5
+  tag('agent-4', '.btn.secondary',                'agent-5');
+
+  // ---- Place Order · Select Farmer (agent-6) ----
+  tag('agent-6', '.customer-card',                'agent-7');
+
+  // ---- Shop · Ordering On Behalf Of (agent-7) ----
+  tag('agent-7', '.cat-card',                     'shop-2');         // category card → product list
+  tag('agent-7', '.app-bar .actions svg',         'shop-3');         // cart icon → cart
+
+  // ====================== AGENT FLOWS TAB · precise selector wiring ======================
+
+  // ---- Agent · Pending Approval (agent-flows-1) ----
+  tag('agent-flows-1', '.btn.secondary',          'home-1');         // "Continue as farmer"
+  // Primary "Call Kampala Nakawa outlet" leaves no nav (real call would happen)
+
+  // ---- Register New Farmer · Form (agent-flows-2) ----
+  tag('agent-flows-2', '.btn.primary',            'agent-flows-3');  // Send OTP → OTP screen
+
+  // ---- Register New Farmer · OTP (agent-flows-3) ----
+  tag('agent-flows-3', '.btn.primary',            'agent-flows-4');  // Verify & Continue → success
+
+  // ---- Register New Farmer · Success (agent-flows-4) ----
+  if (screenMap['agent-flows-4']) {
+    const af4 = screenMap['agent-flows-4'];
+    // Bottom action buttons: "Start his first order" + "Done"
+    const buttons = af4.querySelectorAll('.confirm > div:last-child .btn, .btn');
+    af4.querySelectorAll('.btn.primary').forEach(b => { b.dataset.protoGo = 'agent-7'; });
+    af4.querySelectorAll('.btn.secondary').forEach(b => { b.dataset.protoGo = 'agent-flows-5'; });
+    // Three set-rows in the "WHAT NEXT" list
+    const rows = af4.querySelectorAll('.set-row');
+    if (rows[0]) rows[0].dataset.protoGo = 'agent-7';                // Start his first order
+    if (rows[1]) rows[1].dataset.protoGo = 'agent-flows-6';           // Add a note (customer profile)
+    // rows[2] "Talk to or WhatsApp" stays
+  }
+
+  // ---- My Customers (agent-flows-5) ----
+  tag('agent-flows-5', '.customer-card',          'agent-flows-6');  // tap any customer → profile
+  tag('agent-flows-5', '.fab',                    'agent-flows-2');  // Register new farmer
+
+  // ---- Customer Profile · Nakato (agent-flows-6) ----
+  // Various actions inside; primary "Start an order" goes to agent-7
+  tag('agent-flows-6', '.btn.primary',            'agent-7');
+
+  // ---- Outlet Stock + Payout History (agent-flows-7/8) — back arrow returns ----
+
+  // ====================== FIELD OFFICER TAB · precise selector wiring ======================
+
+  // ---- FO · Pending Approval (fo-1) ----
+  tag('fo-1', '.btn.secondary',                   'home-1');         // Use as farmer
+  // Primary "Call Agro and More HQ" stays (real call)
+
+  // ---- FO · Home Dashboard (fo-2) ----
+  tag('fo-2', '.bell',                            'home-2');
+  tag('fo-2', '.avatar',                          'fo-9');           // FO avatar → own profile
+  // Top schedule items → visit detail (placeholder)
+  tag('fo-2', '.schedule-item',                   'fo-7');
+  // 4 quick tiles
+  tag('fo-2', '.quick-grid .quick', 'fo-4', 0);                      // Log a farm visit
+  tag('fo-2', '.quick-grid .quick', 'fo-8', 1);                      // My ratings
+  tag('fo-2', '.quick-grid .quick', 'fo-6', 2);                      // My visits
+  tag('fo-2', '.quick-grid .quick', 'fo-9', 3);                      // Availability
+  // KPI strip → advisory dashboard
+  tag('fo-2', '.kpi-strip',                       'fo-3');
+
+  // ---- Advisory Dashboard (fo-3) ----
+  // Stats and charts; primary action goes to talks log
+  tag('fo-3', '.btn.primary',                     'fo-8');
+
+  // ---- Log Farm Visit · Form (fo-4) ----
+  tag('fo-4', '.btn.primary',                     'fo-6');           // Submit visit log → My Visits
+  // GPS unavailable fallback link (if any) → fo-5
+  if (screenMap['fo-4']) {
+    const f4 = screenMap['fo-4'];
+    f4.querySelectorAll('a, button').forEach(el => {
+      const txt = (el.textContent || '').toLowerCase();
+      if (txt.includes('gps') && txt.includes('unavailable')) {
+        el.dataset.protoGo = 'fo-5';
+      }
+    });
+  }
+
+  // ---- Log Visit · GPS Unavailable (fo-5) ----
+  tag('fo-5', '.btn.primary',                     'fo-4');           // Continue with manual location → back to form
+
+  // ---- My Visits (fo-6) ----
+  // Each visit row routes to detail
+  tag('fo-6', '.visit-card, .order-card, .schedule-item, .card', 'fo-7');
+
+  // ---- Visit Detail (fo-7) — back arrow returns ----
+  tag('fo-7', '.btn.primary',                     'fo-6');           // Edit / done → return
+
+  // ---- Talks & Ratings Log (fo-8) — back arrow returns ----
+
+  // ---- Availability & Profile (fo-9) — back arrow returns ----
+  tag('fo-9', '.btn.primary',                     'fo-2');           // Save → back to home
+
+  // ====================== DIASPORA TAB · precise selector wiring ======================
+
+  // ---- Diaspora · Home (diaspora-1) ----
+  tag('diaspora-1', '.bell',                      'home-2');
+  tag('diaspora-1', '.avatar',                    'profile-1');
+  tag('diaspora-1', '.gift-btn, .gift-cta button','diaspora-4');     // Start a new gift
+  tag('diaspora-1', '.gift-cta',                  'diaspora-4');     // tap card too
+  tag('diaspora-1', '.rate-card',                 'diaspora-1');     // FX card stays
+  // Recent orders → tracking
+  tag('diaspora-1', '.order-card',                'diaspora-8');
+  // Recipient card on home → recipients page
+  tag('diaspora-1', '.rec-card',                  'diaspora-2');
+
+  // ---- My Recipients (diaspora-2) ----
+  if (screenMap['diaspora-2']) {
+    const d2 = screenMap['diaspora-2'];
+    // "Send to Sarah / Mary" primary buttons → shop
+    d2.querySelectorAll('.rec-card .btn.primary').forEach(b => { b.dataset.protoGo = 'diaspora-4'; });
+    // "Edit" secondary buttons → add recipient form (we reuse the form for edit)
+    d2.querySelectorAll('.rec-card .btn.secondary').forEach(b => { b.dataset.protoGo = 'diaspora-3'; });
+    // FAB → add recipient
+    d2.querySelectorAll('.fab').forEach(b => { b.dataset.protoGo = 'diaspora-3'; });
+  }
+
+  // ---- Add Recipient (diaspora-3) ----
+  tag('diaspora-3', '.btn.primary',               'diaspora-2');     // Save recipient → back to list
+  // "Save" link in app-bar
+  if (screenMap['diaspora-3']) {
+    screenMap['diaspora-3'].querySelectorAll('.app-bar .actions span').forEach(el => {
+      if (/save/i.test(el.textContent || '')) el.dataset.protoGo = 'diaspora-2';
+    });
+  }
+
+  // ---- Shop for Diaspora (diaspora-4) ----
+  // Any product / gift / category card → product detail
+  tag('diaspora-4', '.product-card, .gift-card, .cat-card, .pd-card', 'diaspora-5');
+
+  // ---- Product · Robusta Coffee Gift (diaspora-5) ----
+  tag('diaspora-5', '.btn.primary',               'diaspora-6');     // Add to cart / Checkout → checkout
+
+  // ---- Checkout · Visa (diaspora-6) ----
+  tag('diaspora-6', '.btn.primary',               'diaspora-7');     // Pay / Place order → confirmation
+
+  // ---- Confirmation · Pickup Code (diaspora-7) ----
+  tag('diaspora-7', '.btn.primary',               'diaspora-8');     // Track Order → tracking
+
+  // ---- Order Tracking (diaspora-8) — back arrow returns ----
 
   // ---- Dev jump menu ---------------------------------------------------
   const sel = document.getElementById('protoJump');
