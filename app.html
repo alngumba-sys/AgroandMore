@@ -8,13 +8,23 @@
 <!-- Pre-paint flash guard · runs synchronously before body renders.
      If the URL has ?mode=app OR we're running as an installed PWA,
      mark <html> so CSS can hide the design-preview chrome immediately —
-     no flash of the title / tab nav / grid before JS catches up. -->
+     no flash of the title / tab nav / grid before JS catches up.
+     Includes a 2.5s safety fallback so the screen NEVER stays blank if
+     proto-mode JS fails to initialize for any reason. -->
 <script>
 (function(){
   try {
     var standalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
     if (location.search.indexOf('mode=app') > -1 || standalone) {
       document.documentElement.classList.add('proto-pre');
+      // Safety net: if proto-mode hasn't initialized within 2.5s,
+      // strip the pre-paint guard entirely so the user always sees something.
+      setTimeout(function(){
+        if (!document.documentElement.classList.contains('proto-ready')) {
+          document.documentElement.classList.remove('proto-pre');
+          document.documentElement.classList.add('proto-ready');
+        }
+      }, 2500);
     }
   } catch(_) {}
 })();
@@ -333,7 +343,13 @@
   .illus.slide-3{background:linear-gradient(135deg, #D4695B 0%, #78290F 100%)}
   .illus img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .illus img.failed{display:none}
-  .illus::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,21,36,.15) 0%, rgba(0,21,36,.55) 100%);pointer-events:none}
+  /* Soft cream gradient fades the picture down into the body section below.
+     Replaces the previous dark vignette so the image blends seamlessly into the cream slide body. */
+  .illus::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:55%;
+    background:linear-gradient(180deg, rgba(255,236,209,0) 0%, rgba(255,236,209,.65) 60%, var(--cream) 100%);
+    pointer-events:none;
+  }
   .illus .caption-tag{
     position:absolute;top:14px;left:14px;z-index:2;
     background:rgba(0,21,36,.75);color:var(--cream);
@@ -8389,10 +8405,14 @@
     document.documentElement.classList.add('proto-ready');
     return;
   }
+  // Mark proto-mode active and reveal the body IMMEDIATELY — before any
+  // wireup code runs — so even if a wiring step throws, the screen still appears.
   document.body.classList.add('proto-mode');
-  if (wantsDev) document.body.classList.add('proto-dev');
-  // Flag that proto-mode is ready so the pre-paint guard releases body visibility
+  // CRITICAL: remove proto-pre so its !important display:none rules stop
+  // hiding the active screen. Proto-mode CSS takes over from here.
+  document.documentElement.classList.remove('proto-pre');
   document.documentElement.classList.add('proto-ready');
+  if (wantsDev) document.body.classList.add('proto-dev');
 
   // ---- Auto-discover screens & assign IDs ------------------------------
   const screenMap = {};                            // id  -> element
