@@ -8321,36 +8321,88 @@
   function wireCTA(screenId, matcher, target){
     const slide = screenMap[screenId];
     if (!slide) return;
-    const candidates = slide.querySelectorAll('button, a, .role-card, .adv-tile, .quick, .pd-card, .product-card, .cat-card, .otaker-card, .officer-card, .price-card, .sr-row, .order-card, .od-row, .set-row, .contact-card');
+    const candidates = slide.querySelectorAll('button, a, .role-card, .adv-tile, .quick, .pd-card, .product-card, .cat-card, .otaker-card, .officer-card, .price-card, .sr-row, .order-card, .od-row, .set-row, .contact-card, .tile, .nav-row, .li, .lr-card, .otp-input + button');
     candidates.forEach(el => {
-      const txt = (el.innerText || '').trim().replace(/\s+/g, ' ');
+      // Use textContent (works on display:none elements; innerText doesn't)
+      const txt = (el.textContent || '').trim().replace(/\s+/g, ' ');
+      if (!txt) return;
       const match = typeof matcher === 'string'
         ? txt.toLowerCase().includes(matcher.toLowerCase())
         : matcher.test(txt);
-      if (match) {
+      if (match && !el.dataset.protoGo) {
         el.dataset.protoGo = target;
       }
     });
   }
 
+  // Common signup-button regex (matches Continue / Sign up / Verify / Send OTP / Submit / Done / Register / Next / Save / Confirm)
+  const RE_NEXT = /continue|sign[\s\-]*up|verify|send\s*otp|otp|submit|done|finish|register|next|save|confirm|get\s*started|start/i;
+
   // Onboarding flow
-  wireCTA('onboarding-2', /continue|get started|next/i,           'onboarding-3');
-  // Role selection cards on onboarding-3
+  wireCTA('onboarding-2', RE_NEXT,           'onboarding-3');
+
+  // Role selection cards on onboarding-3 — each card jumps to its role's signup
   if (screenMap['onboarding-3']) {
     const slide = screenMap['onboarding-3'];
-    slide.querySelectorAll('.role-card, .role, .role-pick, .role-tile, button, .card').forEach(card => {
-      const t = (card.innerText || '').toLowerCase();
-      if (t.includes('farmer'))               card.dataset.protoGo = 'onboarding-4';
-      else if (t.includes('dealer') || t.includes('agent')) card.dataset.protoGo = 'onboarding-5';
-      else if (t.includes('field officer') || t.includes('extension')) card.dataset.protoGo = 'onboarding-6';
-      else if (t.includes('diaspora') || t.includes('abroad'))         card.dataset.protoGo = 'onboarding-7';
+    slide.querySelectorAll('.role-card, .role, .role-pick, .role-tile, .card').forEach(card => {
+      const t = (card.textContent || '').toLowerCase();
+      if (t.includes('farmer'))                                         card.dataset.protoGo = 'onboarding-4';
+      else if (t.includes('agent') || t.includes('dealer'))             card.dataset.protoGo = 'onboarding-5';
+      else if (t.includes('field officer') || t.includes('extension'))  card.dataset.protoGo = 'onboarding-6';
+      else if (t.includes('diaspora') || t.includes('abroad'))          card.dataset.protoGo = 'onboarding-7';
+    });
+    // Continue button → use the .selected role's signup (or default to Farmer)
+    slide.querySelectorAll('button').forEach(btn => {
+      if (/continue|next|get\s*started/i.test(btn.textContent || '')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          const sel = slide.querySelector('.role-card.selected, .role-card.on, .role-card.active');
+          const t = (sel?.textContent || 'farmer').toLowerCase();
+          if (t.includes('agent') || t.includes('dealer'))            showScreen('onboarding-5');
+          else if (t.includes('field officer'))                       showScreen('onboarding-6');
+          else if (t.includes('diaspora') || t.includes('abroad'))    showScreen('onboarding-7');
+          else                                                        showScreen('onboarding-4');
+        });
+      }
     });
   }
-  wireCTA('onboarding-4', /continue|sign up|next|verify/i, 'onboarding-8');
-  wireCTA('onboarding-5', /continue|sign up|next|verify/i, 'onboarding-8');
-  wireCTA('onboarding-6', /continue|sign up|next|submit/i, 'onboarding-8');
-  wireCTA('onboarding-7', /continue|sign up|next|verify/i, 'onboarding-8');
-  wireCTA('onboarding-8', /verify|continue|enter|submit/i, 'home-1');
+
+  // Sign-up forms — "Send OTP" / "Continue" / "Submit" all go to OTP screen
+  wireCTA('onboarding-4', RE_NEXT, 'onboarding-8');
+  wireCTA('onboarding-5', RE_NEXT, 'onboarding-8');
+  wireCTA('onboarding-6', RE_NEXT, 'onboarding-8');  // Field Officer signup → OTP → FO Pending
+  wireCTA('onboarding-7', RE_NEXT, 'onboarding-8');  // Diaspora signup → OTP → Diaspora Home
+  // OTP — "Verify" / "Submit" routes to the right home screen based on which role signed up.
+  // We track the "last role" via a tiny state cookie; default to farmer home.
+  if (screenMap['onboarding-8']) {
+    const slide = screenMap['onboarding-8'];
+    slide.querySelectorAll('button').forEach(btn => {
+      if (RE_NEXT.test(btn.textContent || '')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          const lastRole = sessionStorage.getItem('proto_last_role') || 'farmer';
+          const target = ({
+            farmer:   'home-1',
+            agent:    'agent-flows-1',     // Agent · Pending Approval
+            fo:       'fo-1',              // FO · Pending Approval
+            diaspora: 'diaspora-1'         // Diaspora · Home
+          })[lastRole] || 'home-1';
+          showScreen(target);
+        });
+      }
+    });
+  }
+  // Track which signup screen was visited so OTP knows where to go next
+  ['onboarding-4','onboarding-5','onboarding-6','onboarding-7'].forEach((id, i) => {
+    const slide = screenMap[id];
+    if (!slide) return;
+    const role = ['farmer','agent','fo','diaspora'][i];
+    new MutationObserver(() => {
+      if (slide.classList.contains('proto-active')) {
+        sessionStorage.setItem('proto_last_role', role);
+      }
+    }).observe(slide, { attributes: true, attributeFilter: ['class'] });
+  });
 
   // Home → quick actions
   wireCTA('home-1', /shop|order/i,                      'shop-1');

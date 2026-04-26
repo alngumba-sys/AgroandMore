@@ -2,7 +2,7 @@
 // Cache-first for the shell, network-falling-back-to-cache for everything else.
 // Bump CACHE_VERSION when you push a new build to force clients to refresh.
 
-const CACHE_VERSION = 'agmore-v4';
+const CACHE_VERSION = 'agmore-v5';
 const SHELL = [
   './',
   './index.html',
