@@ -20,11 +20,11 @@
 <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
 
 <!-- Pre-warm the full mockup so the redirect is instant -->
-<link rel="preload" href="app.html" as="document">
-<link rel="prefetch" href="app.html">
+<link rel="preload" href="app.html?mode=app" as="document">
+<link rel="prefetch" href="app.html?mode=app">
 
 <!-- Fallback redirect for users without JavaScript -->
-<meta http-equiv="refresh" content="1; url=app.html">
+<meta http-equiv="refresh" content="1; url=app.html?mode=app">
 
 <style>
   *,*::before,*::after{box-sizing:border-box}
@@ -83,8 +83,8 @@
         // Silent — the page works without it
       });
     }
-    // Hand off to the full mockup as soon as the splash is visible
-    setTimeout(function () { location.replace('app.html'); }, 600);
+    // Hand off to the prototype as soon as the splash is visible
+    setTimeout(function () { location.replace('app.html?mode=app'); }, 600);
   </script>
 
 </body>
