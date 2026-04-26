@@ -3,7 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agro and More — App Mockups</title>
+<title>Agro and More</title>
+
+<!-- Pre-paint flash guard · runs synchronously before body renders.
+     If the URL has ?mode=app OR we're running as an installed PWA,
+     mark <html> so CSS can hide the design-preview chrome immediately —
+     no flash of the title / tab nav / grid before JS catches up. -->
+<script>
+(function(){
+  try {
+    var standalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+    if (location.search.indexOf('mode=app') > -1 || standalone) {
+      document.documentElement.classList.add('proto-pre');
+    }
+  } catch(_) {}
+})();
+</script>
+<style>
+  /* Hide every design-preview surface from the very first paint when in app mode */
+  html.proto-pre{background:#001524}
+  html.proto-pre body{background:#001524!important;visibility:hidden}
+  html.proto-pre.proto-ready body{visibility:visible}
+  /* Belt-and-suspenders: keep the chrome elements display:none even before JS runs */
+  html.proto-pre .page-header,
+  html.proto-pre .tab-nav,
+  html.proto-pre .section-intro,
+  html.proto-pre .screen-label,
+  html.proto-pre .screen-caption,
+  html.proto-pre .footer-note{display:none!important}
+  html.proto-pre .grid{padding:0!important;margin:0!important;display:block!important;grid-template-columns:none!important;gap:0!important;max-width:none!important}
+  html.proto-pre .grid > div{display:none!important}
+</style>
 
 <!-- PWA · installable Android app -->
 <link rel="manifest" href="manifest.json">
@@ -237,20 +267,40 @@
       radial-gradient(circle at 80% 20%, #2D7F2D 0, transparent 35%);
   }
   .splash .logo-svg{width:260px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12));position:relative;z-index:2}
+  /* Static dark-orange line ABOVE the tagline */
+  .splash .accent-line{
+    margin:30px auto 12px;height:3px;width:160px;
+    border-radius:2px;background:#C44600;
+    box-shadow:0 0 14px rgba(196,70,0,.35);
+    position:relative;z-index:2;
+    animation:splash-fade-in .55s ease-out .1s both;
+  }
   .splash .powered{
-    margin-top:30px;
     font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;
     color:var(--ink);line-height:1.18;letter-spacing:-0.01em;
     text-align:center;padding:0 24px;position:relative;z-index:2;
-    animation:splash-fade-in .55s ease-out .15s both;
+    animation:splash-fade-in .55s ease-out .2s both;
   }
-  .splash .accent-line{
-    margin:14px auto 0;height:3px;width:0;
-    border-radius:2px;background:#C44600;
-    position:relative;z-index:2;
-    box-shadow:0 0 14px rgba(196,70,0,.45);
-    animation:splash-line 2.4s ease-in-out infinite;
+  /* Feature carousel — words cycle below the tagline, one at a time */
+  .splash .feature-line{
+    position:relative;height:22px;width:100%;
+    margin-top:14px;text-align:center;z-index:2;
   }
+  .splash .feature-line .feat{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;
+    color:var(--teal);letter-spacing:.01em;
+    opacity:0;
+    animation:feature-cycle 4.5s infinite;
+  }
+  .splash .feature-line .feat svg{flex-shrink:0;color:var(--teal)}
+  .splash .feature-line .feat:nth-child(1){animation-delay:.4s}
+  .splash .feature-line .feat:nth-child(2){animation-delay:1.3s}
+  .splash .feature-line .feat:nth-child(3){animation-delay:2.2s}
+  .splash .feature-line .feat:nth-child(4){animation-delay:3.1s}
+  .splash .feature-line .feat:nth-child(5){animation-delay:4.0s}
+
   .splash .loader{
     position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
     width:44px;height:3px;border-radius:2px;background:rgba(0,21,36,.15);
@@ -265,11 +315,12 @@
     from{opacity:0;transform:translateY(8px)}
     to  {opacity:1;transform:translateY(0)}
   }
-  @keyframes splash-line{
-    0%   {width:0;     opacity:0}
-    18%  {width:160px; opacity:1}
-    62%  {width:160px; opacity:1}
-    100% {width:0;     opacity:0}
+  @keyframes feature-cycle{
+    0%   {opacity:0;transform:translateY(6px)}
+    4%   {opacity:1;transform:translateY(0)}
+    16%  {opacity:1;transform:translateY(0)}
+    20%  {opacity:0;transform:translateY(-6px)}
+    100% {opacity:0;transform:translateY(-6px)}
   }
 
   /* ========================= ONBOARDING CAROUSEL ========================= */
@@ -516,14 +567,28 @@
   .cat-card{
     background:#fff;border:1px solid var(--ink-10);border-radius:14px;overflow:hidden;
   }
-  .cat-img{height:76px;background:var(--teal);position:relative;display:flex;align-items:center;justify-content:center;color:var(--cream)}
+  .cat-img{height:96px;background:var(--teal);position:relative;display:flex;align-items:center;justify-content:center;color:var(--cream);overflow:hidden}
   .cat-img.orange{background:var(--orange)}
   .cat-img.rust{background:var(--rust)}
   .cat-img.olive{background:#5E7C1E}
   .cat-img.brown{background:#8B5A2B}
   .cat-img.blue{background:#2C5E7C}
   .cat-img.gold{background:#C99A2E}
-  .cat-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+  .cat-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:1}
+  /* Bottom-left chip with the category emoji — sits on top of the photo for instant recognition */
+  .cat-img .ic-chip{
+    position:absolute;left:8px;bottom:8px;z-index:3;
+    width:30px;height:30px;border-radius:9px;
+    background:rgba(255,236,209,.92);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;line-height:1;
+    box-shadow:0 4px 10px -2px rgba(0,21,36,.25);
+  }
+  /* Soft top-down gradient overlay so the corner chip + future text remain legible */
+  .cat-img::after{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,21,36,.18) 100%);
+  }
   .cat-body{padding:10px 12px}
   .cat-name{font-size:12px;font-weight:700;color:var(--ink);margin:0}
   .cat-count{font-size:10px;color:var(--teal);margin-top:2px;font-weight:600}
@@ -1805,8 +1870,51 @@
         <div class="splash">
           <div class="pattern"></div>
           <img class="logo-svg" src="brand/agmore-full.png" alt="Agro and More — Empowering Agri-Business in Uganda" style="width:260px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(0,21,36,.12))">
-          <div class="powered">Empowering Agri-Business in Uganda</div>
           <div class="accent-line"></div>
+          <div class="powered">Empowering Agri-Business in Uganda</div>
+          <div class="feature-line">
+            <span class="feat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 4h2.5l1.7 9.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L20 7H7" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="9"  cy="20" r="1.4" fill="currentColor"/>
+                <circle cx="17" cy="20" r="1.4" fill="currentColor"/>
+              </svg>
+              Shop seeds &amp; fertilizer
+            </span>
+            <span class="feat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 5h14a1 1 0 011 1v9a1 1 0 01-1 1h-7l-4 4v-4H5a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="9"  cy="11" r="1.2" fill="currentColor"/>
+                <circle cx="12" cy="11" r="1.2" fill="currentColor"/>
+                <circle cx="15" cy="11" r="1.2" fill="currentColor"/>
+              </svg>
+              Talk to an agronomist
+            </span>
+            <span class="feat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 9c-1.7-1.2-3.4-1.6-5.3-1 0 2.2 1.7 3.8 5.3 4.2M12 9c1.7-1.2 3.4-1.6 5.3-1 0 2.2-1.7 3.8-5.3 4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 15c-1.7-1.2-3.4-1.6-5.3-1 0 2.2 1.7 3.8 5.3 4.2M12 15c1.7-1.2 3.4-1.6 5.3-1 0 2.2-1.7 3.8-5.3 4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Sell to verified buyers
+            </span>
+            <span class="feat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 7l9-4 9 4v10l-9 4-9-4V7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M3 7l9 4 9-4M12 11v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+              Trace your harvest
+            </span>
+            <span class="feat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 6h8a1 1 0 011 1v5h2.5L21 14v3h-2.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M8 6v8" stroke="currentColor" stroke-width="2"/>
+                <circle cx="6"  cy="17" r="3" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17" cy="18" r="2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Hire a tractor
+            </span>
+          </div>
           <div class="loader"></div>
         </div>
       </div></div>
@@ -1827,15 +1935,34 @@
             <h2>Everything for your farm, in one app.</h2>
             <div class="feat-list">
               <div class="feat-row">
-                <div class="fi orange">🛒</div>
+                <div class="fi orange">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3 4h2.5l1.7 9.5a2 2 0 002 1.5h7.6a2 2 0 002-1.5L20 7H7" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                    <circle cx="9" cy="20" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="20" r="1.6" fill="currentColor"/>
+                  </svg>
+                </div>
                 <div class="ft"><strong>Shop inputs</strong> — seeds, fertilizer, tools at the closest Agro and More outlet.</div>
               </div>
               <div class="feat-row">
-                <div class="fi">💬</div>
+                <div class="fi">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 5h14a1 1 0 011 1v9a1 1 0 01-1 1h-7l-4 4v-4H5a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <circle cx="9"  cy="11" r="1.3" fill="currentColor"/>
+                    <circle cx="12" cy="11" r="1.3" fill="currentColor"/>
+                    <circle cx="15" cy="11" r="1.3" fill="currentColor"/>
+                  </svg>
+                </div>
                 <div class="ft"><strong>Talk to a qualified agronomist</strong> — in English, Luganda, Acholi, Runyankole.</div>
               </div>
               <div class="feat-row">
-                <div class="fi rust">🌾</div>
+                <div class="fi rust">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 9c-1.7-1.2-3.4-1.6-5.3-1 0 2.2 1.7 3.8 5.3 4.2M12 9c1.7-1.2 3.4-1.6 5.3-1 0 2.2-1.7 3.8-5.3 4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 15c-1.7-1.2-3.4-1.6-5.3-1 0 2.2 1.7 3.8 5.3 4.2M12 15c1.7-1.2 3.4-1.6 5.3-1 0 2.2-1.7 3.8-5.3 4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
                 <div class="ft"><strong>Sell &amp; trace your produce</strong> — current matooke prices, off-taker contacts, coffee batch tracking.</div>
               </div>
             </div>
@@ -2469,13 +2596,55 @@
             <span class="chip ghost">New this week</span>
           </div>
           <div class="cat-grid">
-            <div class="cat-card"><div class="cat-img olive"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6"><path d="M12 3c-4 3-5 9-2 13 2-1 5-5 2-13z"/><path d="M10 16v4"/></svg></div><div class="cat-body"><div class="cat-name">Seeds</div><div class="cat-count">218 items</div></div></div>
-            <div class="cat-card"><div class="cat-img brown"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><rect x="6" y="5" width="12" height="16" rx="1"/><path d="M6 9h12"/></svg></div><div class="cat-body"><div class="cat-name">Fertilizers</div><div class="cat-count">94 items</div></div></div>
-            <div class="cat-card new"><div class="cat-img orange"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 9-7 11-4-2-7-6-7-11V6z"/><path d="M10 12c0-2 4-2 4 0s-4 2-4 4h4"/></svg></div><div class="cat-body"><div class="cat-name">Crop Protection</div><div class="cat-count">136 items</div></div></div>
-            <div class="cat-card"><div class="cat-img rust"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><path d="M4 20l5-5M14 3l3 3-9 9-3-3zM14 3l3-1 1 3"/></svg></div><div class="cat-body"><div class="cat-name">Tools</div><div class="cat-count">165 items</div></div></div>
-            <div class="cat-card"><div class="cat-img blue"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><path d="M6 10a5 5 0 0110 0v3H6zM11 13v6M7 19h8"/></svg></div><div class="cat-body"><div class="cat-name">Irrigation</div><div class="cat-count">52 items</div></div></div>
-            <div class="cat-card"><div class="cat-img gold"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><path d="M8 3c1-1 7-1 8 0s1 3 0 4c-2 1-6 1-8 0s-1-3 0-4zM8 4v14a4 4 0 008 0V4"/></svg></div><div class="cat-body"><div class="cat-name">Livestock</div><div class="cat-count">88 items</div></div></div>
-            <div class="cat-card" style="grid-column:span 2"><div class="cat-img" style="background:#3E5C2E;height:60px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M9 14h6"/></svg></div><div class="cat-body"><div class="cat-name">Post-harvest</div><div class="cat-count">Tarpaulins, silos, scales · 61 items</div></div></div>
+            <div class="cat-card">
+              <div class="cat-img olive">
+                <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80" alt="Seeds" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">🌱</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Seeds</div><div class="cat-count">218 items</div></div>
+            </div>
+            <div class="cat-card">
+              <div class="cat-img brown">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Fertilizers" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">🪣</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Fertilizers</div><div class="cat-count">94 items</div></div>
+            </div>
+            <div class="cat-card new">
+              <div class="cat-img orange">
+                <img src="https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?auto=format&fit=crop&w=600&q=80" alt="Crop Protection" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">🛡️</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Crop Protection</div><div class="cat-count">136 items</div></div>
+            </div>
+            <div class="cat-card">
+              <div class="cat-img rust">
+                <img src="https://images.unsplash.com/photo-1589928964692-cae7b5c7c14e?auto=format&fit=crop&w=600&q=80" alt="Tools" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">🔧</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Tools</div><div class="cat-count">165 items</div></div>
+            </div>
+            <div class="cat-card">
+              <div class="cat-img blue">
+                <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=600&q=80" alt="Irrigation" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">💦</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Irrigation</div><div class="cat-count">52 items</div></div>
+            </div>
+            <div class="cat-card">
+              <div class="cat-img gold">
+                <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80" alt="Livestock" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">🐔</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Livestock</div><div class="cat-count">88 items</div></div>
+            </div>
+            <div class="cat-card" style="grid-column:span 2">
+              <div class="cat-img" style="background:#3E5C2E;height:84px">
+                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=80" alt="Post-harvest" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                <span class="ic-chip">📦</span>
+              </div>
+              <div class="cat-body"><div class="cat-name">Post-harvest</div><div class="cat-count">Tarpaulins, silos, scales · 61 items</div></div>
+            </div>
           </div>
         </div></div>
         %%BNAV_SHOP%%
@@ -8214,9 +8383,16 @@
   const isStandalone = matchMedia('(display-mode: standalone)').matches;
   const wantsDev     = params.has('dev');
 
-  if (!wantsProto && !isStandalone) return;       // stay in design-preview mode
+  if (!wantsProto && !isStandalone) {
+    // Stay in design-preview mode. The pre-paint guard hid <body>; reveal it.
+    document.documentElement.classList.remove('proto-pre');
+    document.documentElement.classList.add('proto-ready');
+    return;
+  }
   document.body.classList.add('proto-mode');
   if (wantsDev) document.body.classList.add('proto-dev');
+  // Flag that proto-mode is ready so the pre-paint guard releases body visibility
+  document.documentElement.classList.add('proto-ready');
 
   // ---- Auto-discover screens & assign IDs ------------------------------
   const screenMap = {};                            // id  -> element
@@ -8320,7 +8496,9 @@
     }
   }, true);
 
-  // ---- Auto-advance the splash screen after 1.5s -----------------------
+  // ---- Auto-advance the splash screen after the feature carousel completes ----
+  // 5 features × 0.9s each = 4.5s. We hold the splash slightly longer so the
+  // user sees at least one full cycle of "Shop / Talk / Sell / Trace / Hire" words.
   let splashTimer;
   function maybeAutoAdvanceSplash(){
     clearTimeout(splashTimer);
@@ -8329,7 +8507,7 @@
         if ((location.hash.replace(/^#/, '') || 'onboarding-1') === 'onboarding-1'){
           showScreen('onboarding-2');
         }
-      }, 1500);
+      }, 4800);
     }
   }
   window.addEventListener('hashchange', maybeAutoAdvanceSplash);
