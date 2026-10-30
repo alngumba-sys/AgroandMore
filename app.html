@@ -465,6 +465,29 @@
   .quick .qn{font-size:12px;font-weight:700;color:var(--ink)}
   .quick .qd{font-size:10px;color:var(--ink-60);font-weight:500;line-height:1.3}
 
+  /* Farmer home · scan & memory strip */
+  .scan-home{
+    display:flex;gap:12px;align-items:center;padding:12px;
+    background:linear-gradient(135deg, #0D4751 0%, var(--teal) 100%);
+    border-radius:14px;margin-bottom:12px;color:#fff;cursor:pointer;
+  }
+  .scan-home .sh-ic{
+    width:44px;height:44px;border-radius:12px;background:rgba(255,236,209,.16);
+    color:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .scan-home .sh-t{font-family:'Poppins';font-weight:700;font-size:13.5px;line-height:1.2;margin:0 0 3px}
+  .scan-home .sh-s{font-size:10.5px;opacity:.88;font-weight:500;line-height:1.35}
+  .scan-home .sh-go{
+    margin-left:auto;flex-shrink:0;background:var(--orange);color:#fff;
+    border:none;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;
+    font-family:inherit;cursor:pointer;white-space:nowrap;
+  }
+  .mem-home-link{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:8px 2px 12px;font-size:11px;color:var(--teal);font-weight:600;
+  }
+  .mem-home-link span{color:var(--ink-60);font-weight:500}
+
   .tip-card{background:#fff;border:1px solid var(--ink-10);border-radius:14px;overflow:hidden;margin-bottom:14px}
   .tip-img{height:120px;background:linear-gradient(135deg,#4A7C4E 0%,#2D5A2F 100%);position:relative;overflow:hidden}
   .tip-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -862,6 +885,100 @@
   .bot-features{margin-top:14px}
   .bot-feat{display:flex;gap:10px;padding:8px 0;align-items:center;font-size:11.5px;color:var(--ink-90);border-bottom:1px solid var(--ink-10)}
   .bot-feat .fi{width:28px;height:28px;border-radius:8px;background:rgba(21,97,109,.12);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+  /* Per-farmer AgroBot memory */
+  .mem-banner{
+    display:flex;gap:10px;align-items:center;padding:10px 12px;margin-bottom:12px;
+    background:#E4F3F5;border:1px solid rgba(21,97,109,.18);border-radius:12px;
+  }
+  .mem-banner .mb-ava{
+    width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;
+    font-family:'Poppins';flex-shrink:0;
+  }
+  .mem-banner .mb-t{font-size:12px;font-weight:700;color:var(--ink);line-height:1.2}
+  .mem-banner .mb-s{font-size:10.5px;color:var(--teal);font-weight:500;margin-top:2px;line-height:1.3}
+  .mem-banner .mb-link{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--teal);flex-shrink:0}
+
+  .bot-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 14px}
+  .bot-action{
+    background:#fff;border:1px solid var(--ink-10);border-radius:12px;padding:12px 10px;
+    display:flex;flex-direction:column;gap:6px;cursor:pointer;min-height:88px;
+  }
+  .bot-action .ba-ic{
+    width:34px;height:34px;border-radius:10px;background:var(--cream);color:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .bot-action .ba-t{font-size:12px;font-weight:700;color:var(--ink);line-height:1.2}
+  .bot-action .ba-s{font-size:10px;color:var(--ink-60);font-weight:500;line-height:1.3}
+
+  /* Crop scan camera */
+  .scan-stage{
+    position:relative;border-radius:16px;overflow:hidden;background:#0a1a14;
+    aspect-ratio:3/4;margin:0 0 12px;
+  }
+  .scan-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.88}
+  .scan-frame{
+    position:absolute;inset:18% 12%;border:2px solid rgba(255,236,209,.85);border-radius:18px;
+    box-shadow:0 0 0 999px rgba(0,21,36,.35);
+  }
+  .scan-frame::before,.scan-frame::after{
+    content:"";position:absolute;width:22px;height:22px;border:3px solid var(--orange);
+  }
+  .scan-frame::before{top:-2px;left:-2px;border-right:none;border-bottom:none;border-radius:8px 0 0 0}
+  .scan-frame::after{bottom:-2px;right:-2px;border-left:none;border-top:none;border-radius:0 0 8px 0}
+  .scan-hint{
+    position:absolute;left:12px;right:12px;bottom:14px;z-index:2;
+    background:rgba(0,21,36,.72);color:var(--cream);font-size:11px;font-weight:600;
+    padding:8px 10px;border-radius:10px;text-align:center;line-height:1.35;backdrop-filter:blur(6px);
+  }
+  .scan-shutter{
+    width:64px;height:64px;border-radius:50%;border:4px solid #fff;background:var(--orange);
+    box-shadow:0 6px 18px -4px rgba(255,125,0,.55);margin:4px auto 0;display:block;cursor:pointer;
+  }
+
+  /* Diagnosis result */
+  .diag-card{
+    background:#fff;border:1px solid var(--ink-10);border-radius:14px;overflow:hidden;margin-bottom:12px;
+  }
+  .diag-card .diag-img{height:140px;position:relative;background:#1a1a1a}
+  .diag-card .diag-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .diag-card .diag-img .conf{
+    position:absolute;top:10px;left:10px;background:rgba(0,21,36,.78);color:#fff;
+    font-size:10px;font-weight:700;padding:4px 8px;border-radius:6px;
+  }
+  .diag-body{padding:12px 14px 14px}
+  .diag-body .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .diag-body h3{font-family:'Poppins';font-weight:800;font-size:16px;margin:0 0 4px;color:var(--ink);line-height:1.2}
+  .diag-body .crop-line{font-size:11.5px;color:var(--teal);font-weight:600;margin-bottom:8px}
+  .diag-body p{font-size:11.5px;color:var(--ink-90);line-height:1.45;margin:0 0 10px}
+  .diag-steps{margin:0;padding:0 0 0 16px}
+  .diag-steps li{font-size:11.5px;color:var(--ink-90);line-height:1.4;margin-bottom:4px}
+  .mem-save-note{
+    display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:12px;
+    background:#FFF4E4;border:1px solid rgba(255,125,0,.25);margin-bottom:12px;
+  }
+  .mem-save-note .msn-t{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.25}
+  .mem-save-note .msn-s{font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.35}
+
+  /* Memory history rows */
+  .hist-row{
+    display:flex;gap:10px;align-items:center;padding:10px 12px;background:#fff;
+    border:1px solid var(--ink-10);border-radius:12px;margin-bottom:8px;cursor:pointer;
+  }
+  .hist-row .ht{
+    width:48px;height:48px;border-radius:10px;background:#1a1a1a;overflow:hidden;flex-shrink:0;position:relative;
+  }
+  .hist-row .ht img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hist-row .hi{flex:1;min-width:0}
+  .hist-row .hn{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.2}
+  .hist-row .hs{font-size:10.5px;color:var(--ink-60);margin-top:2px;line-height:1.3}
+  .hist-row .hd{font-size:10px;color:var(--teal);font-weight:600;margin-top:3px}
+  .pref-pill{
+    display:inline-flex;align-items:center;gap:4px;background:var(--cream);color:var(--ink);
+    font-size:10px;font-weight:700;padding:4px 8px;border-radius:6px;margin:0 6px 6px 0;
+  }
+  .pref-pill.on{background:rgba(21,97,109,.12);color:var(--teal)}
 
   /* Officer profile */
   .op-hero{background:var(--ink);color:var(--cream);padding:20px 16px 24px;margin:-14px -14px 14px;text-align:center;border-radius:0 0 20px 20px;position:relative}
@@ -1861,7 +1978,7 @@
   <button class="tab-btn on" data-target="sec-onboarding">Onboarding <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-home">Home Tab <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-shop">Shop Tab <span class="count">8</span></button>
-  <button class="tab-btn" data-target="sec-advisory">Advisory Tab <span class="count">7</span></button>
+  <button class="tab-btn" data-target="sec-advisory">Advisory Tab <span class="count">12</span></button>
   <button class="tab-btn" data-target="sec-sell">Sell My Produce <span class="count">7</span></button>
   <button class="tab-btn" data-target="sec-profile">Profile Tab <span class="count">8</span></button>
   <button class="tab-btn" data-target="sec-agent">Agent · My Business <span class="count">8</span></button>
@@ -2257,7 +2374,7 @@
 <section id="sec-home" class="tab-section">
   <div class="section-intro">
     <h2>Farmer · Home Tab (first bottom nav)</h2>
-    <p>Every screen a farmer (Nakato Nabirye · Mpigi) can reach from the Home bottom-nav tab after signing in: dashboard, notifications, weather detail, seasonal tip detail, For Hire flow (categories → providers → detail), and Trace My Produce result.</p>
+    <p>Every screen a farmer (Nakato Nabirye · Mpigi) can reach from the Home bottom-nav tab after signing in: dashboard with <strong>Scan my crop</strong> (saves into her AgroBot memory), notifications, weather detail, seasonal tip detail, For Hire flow (categories → providers → detail), and Trace My Produce result.</p>
   </div>
   <div class="grid">
 
@@ -2295,6 +2412,20 @@
               <div class="wx-day"><span class="d">THU</span><svg viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14a4 4 0 110-8 5 5 0 019.9-1 4 4 0 011.1 7.9"/><path d="M9 18l-1 2M13 18l-1 2M17 18l-1 2"/></svg><span>23°</span></div>
             </div>
           </div>
+
+          <div class="scan-home">
+            <div class="sh-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <div class="sh-t">Scan my crop</div>
+              <div class="sh-s">Spot disease · save to your AgroBot memory</div>
+            </div>
+            <button class="sh-go" type="button">Scan</button>
+          </div>
+          <div class="mem-home-link">
+            <span>Last saved: coffee leaf rust · Nkozi</span>
+            <strong>My memory ›</strong>
+          </div>
+
           <div class="quick-grid">
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="qn">Shop inputs</div><div class="qd">Seeds, fertilizer, tools</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="qn">Talk to an expert</div><div class="qd">Agronomist available</div></div>
@@ -2316,7 +2447,7 @@
         </div></div>
         %%BNAV_HOME%%
       </div></div>
-      <div class="screen-caption">Luganda greeting · Mpigi weather with rain advice · 4 quick actions · seasonal tip · trace shortcut.</div>
+      <div class="screen-caption">Luganda greeting · Mpigi weather · Scan my crop (saves to farmer memory) · My memory link · 4 quick actions · seasonal tip · trace.</div>
     </div>
 
     <!-- Notifications -->
@@ -2330,8 +2461,9 @@
           <div class="actions"><span style="font-size:11px;color:var(--cream);opacity:.7;font-weight:600">Mark all read</span></div>
         </div>
         <div class="content"><div class="scroll">
-          <div class="tabs"><div class="t on">All · 4</div><div class="t">Orders</div><div class="t">Advisory</div><div class="t">System</div></div>
-          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Order dispatched</div><div class="preview">Your order <strong>AM-2026-04-24-0137</strong> has left Mpigi Town outlet. Expected tomorrow.</div><div class="ts">Just now</div></div></div>
+          <div class="tabs"><div class="t on">All · 5</div><div class="t">Orders</div><div class="t">Advisory</div><div class="t">System</div></div>
+          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="nb"><div class="title">Scan saved to your memory</div><div class="preview">Coffee leaf rust on your Nkozi Robusta — AgroBot will remember this when you ask for advice.</div><div class="ts">Just now</div></div></div>
+          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Order dispatched</div><div class="preview">Your order <strong>AM-2026-04-24-0137</strong> has left Mpigi Town outlet. Expected tomorrow.</div><div class="ts">12 min ago</div></div></div>
           <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 6 6 12 8 18c4-1 8-5 8-10a8 8 0 00-4-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">New seasonal tip</div><div class="preview">Controlling Fall Armyworm in maize — from Achieng Grace, Senior Agronomist.</div><div class="ts">2 hours ago</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Talk rated</div><div class="preview">Thanks for rating Okello James 5 ★ — your feedback helps other farmers.</div><div class="ts">Yesterday · 16:42</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="nb"><div class="title">Weather alert · Mpigi</div><div class="preview">Heavy rain expected Wed–Thu. Harvest coffee before Tuesday if possible.</div><div class="ts">Yesterday · 06:00</div></div></div>
@@ -3203,7 +3335,7 @@
 <section id="sec-advisory" class="tab-section">
   <div class="section-intro">
     <h2>Farmer · Advisory Tab (third bottom nav)</h2>
-    <p>Four entry points: Talk to an Expert (directory of Field Officers), Ask AgroBot (24/7 WhatsApp AI assistant), Must-Watch Videos, and Radio Recordings. Note that Current Market Price and Trace My Produce are deliberately NOT here — those live under Sell My Produce per the brief. Media is always a link with a thumbnail; never an inline player.</p>
+    <p>Four entry points: Talk to an Expert, Ask AgroBot (24/7 AI with <strong>per-farmer memory</strong>), Must-Watch Videos, and Radio Recordings. AgroBot memory is scoped to the signed-in farmer: crop scans are saved as history, and response preferences (language mix, detail level, organic-first) live in that farmer's memory and can be edited or cleared without affecting anyone else. Media is always a link with a thumbnail; never an inline player.</p>
   </div>
   <div class="grid">
 
@@ -3222,7 +3354,7 @@
         </div>
         <div class="content"><div class="scroll">
           <h2 style="font-family:'Poppins';font-weight:800;font-size:20px;margin:4px 0 4px">How can we help?</h2>
-          <p style="font-size:12px;color:var(--teal);margin:0 0 14px;font-weight:500">Talk to a person, an AI assistant, or learn on your own.</p>
+          <p style="font-size:12px;color:var(--teal);margin:0 0 14px;font-weight:500">Talk to a person, scan a crop into your memory, or learn on your own.</p>
 
           <div class="adv-tiles">
             <div class="adv-tile">
@@ -3236,7 +3368,7 @@
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-5 4V7a1 1 0 011-1z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg>
               </div>
               <div class="tn">Ask AgroBot</div>
-              <div class="td">AI assistant on WhatsApp</div>
+              <div class="td">Scan · memory · WhatsApp</div>
             </div>
             <div class="adv-tile">
               <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l6 3-6 3z" fill="currentColor"/></svg></div>
@@ -3248,6 +3380,15 @@
               <div class="tn">Radio Recordings</div>
               <div class="td">Past CBS &amp; Bukedde shows</div>
             </div>
+          </div>
+
+          <div class="mem-banner" style="margin-top:2px">
+            <div class="mb-ava">NN</div>
+            <div>
+              <div class="mb-t">Your AgroBot memory</div>
+              <div class="mb-s">3 scans saved · Luganda-first replies · private to you</div>
+            </div>
+            <span class="mb-link">Open ›</span>
           </div>
 
           <div style="font-size:12px;font-weight:700;color:var(--ink);margin:6px 0 8px">FEATURED THIS WEEK</div>
@@ -3265,7 +3406,7 @@
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">4 entry tiles · AgroBot flagged 24/7 · featured tip surfaced below.</div>
+      <div class="screen-caption">4 entry tiles · farmer memory strip · AgroBot flagged 24/7 · featured tip below.</div>
     </div>
 
     <!-- 2. TALK TO EXPERT · DIRECTORY -->
@@ -3579,9 +3720,9 @@
       <div class="screen-caption">Videos listed FIRST · Radio below · each row is a link with thumbnail — no embedded player.</div>
     </div>
 
-    <!-- 7. AGROBOT WHATSAPP LAUNCHER -->
+    <!-- 7. AGROBOT HUB · PER-FARMER MEMORY -->
     <div>
-      <div class="screen-label"><span class="num">07</span>Ask AgroBot · WhatsApp</div>
+      <div class="screen-label"><span class="num">07</span>Ask AgroBot · Hub</div>
       <div class="phone"><div class="screen">
         <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
         <div class="app-bar">
@@ -3594,29 +3735,50 @@
               <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-5 4V7a1 1 0 011-1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9" cy="12" r="1.5" fill="#FF7D00"/><circle cx="13" cy="12" r="1.5" fill="#FF7D00"/><circle cx="17" cy="12" r="1.5" fill="#FF7D00"/></svg>
             </div>
             <h2>AgroBot is ready, 24/7.</h2>
-            <div class="sub">An AI assistant trained on Agro and More's products, advisory videos, market prices and weather.</div>
+            <div class="sub">Trained on Agro and More products, prices &amp; weather — and tuned to <strong style="color:#FFECD1">your</strong> farm memory.</div>
+          </div>
+
+          <div class="mem-banner">
+            <div class="mb-ava">NN</div>
+            <div>
+              <div class="mb-t">Nakato Nabirye's memory</div>
+              <div class="mb-s">3 crop scans · Robusta + maize · Luganda-first replies</div>
+            </div>
+            <span class="mb-link">View ›</span>
+          </div>
+
+          <div class="bot-actions">
+            <div class="bot-action">
+              <div class="ba-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <div class="ba-t">Scan a crop</div>
+              <div class="ba-s">Photo → disease ID → save to history</div>
+            </div>
+            <div class="bot-action">
+              <div class="ba-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M4 12a8 8 0 018-8M12 20a8 8 0 01-8-8M20 12a8 8 0 01-8 8"/></svg></div>
+              <div class="ba-t">Customize replies</div>
+              <div class="ba-s">Tone, detail &amp; treatment bias</div>
+            </div>
           </div>
 
           <div class="bot-preview">
-            <div class="hdr">EXAMPLE CHAT</div>
+            <div class="hdr">REMEMBERED FOR YOU</div>
             <div class="bubble user">How do I treat blight on my tomatoes?<div class="time">09:40</div></div>
-            <div class="bubble">For early blight, apply Mancozeb 80WP at 50g/20L water — available at your Mpigi outlet for UGX 18,000/kg. Spray every 10 days.<div class="time">09:40</div></div>
-            <div class="bubble user">Asante! Can it work on beans too?<div class="time">09:41</div></div>
+            <div class="bubble">Nakato — based on your last coffee leaf rust scan (Apr 22) and your preference for short Luganda-first steps: for tomato early blight use Mancozeb 80WP · 50g/20L · Mpigi outlet UGX 18,000/kg. Spray every 10 days. Want organic options instead?<div class="time">09:40</div></div>
           </div>
 
           <button class="wa-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.3c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5L8.6 7c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 5 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3M12 2a10 10 0 00-8.7 15L2 22l5.1-1.3A10 10 0 1012 2z"/></svg>
-            Open WhatsApp
+            Continue on WhatsApp
           </button>
 
           <div class="bot-features">
             <div class="bot-feat">
-              <div class="fi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-              Answers instantly, even at 3am
+              <div class="fi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v5c0 5-3 9-7 11-4-2-7-6-7-11V6z"/></svg></div>
+              Memory is private to this farmer account
             </div>
             <div class="bot-feat">
               <div class="fi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
-              Knows prices, stock &amp; how-to-use for every product
+              Remembers your scans, crops &amp; reply style
             </div>
             <div class="bot-feat" style="border-bottom:none">
               <div class="fi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12a8 8 0 0116 0M6 14h2l1 4H5l1-4zM16 14h2l1 4h-4l1-4z"/></svg></div>
@@ -3628,7 +3790,289 @@
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">Teal hero · WhatsApp-green launcher · example chat preview · escalation to humans described.</div>
+      <div class="screen-caption">Per-farmer memory banner · Scan + Customize actions · WhatsApp continues with that farmer's context.</div>
+    </div>
+
+    <!-- 8. SCAN A CROP -->
+    <div>
+      <div class="screen-label"><span class="num">08</span>Scan a Crop</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Scan a crop
+          <div class="actions"><span style="font-size:10.5px;font-weight:700;color:var(--cream);opacity:.85">Gallery</span></div>
+        </div>
+        <div class="content"><div class="scroll">
+          <p style="font-size:12px;color:var(--teal);margin:2px 0 10px;font-weight:500">Point at one leaf or fruit. The result is saved only to Nakato's AgroBot memory.</p>
+          <div class="scan-stage">
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80" alt="Coffee leaf close-up" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+            <div class="scan-frame"></div>
+            <div class="scan-hint">Hold steady · fill the frame with the affected leaf</div>
+          </div>
+          <div style="display:flex;justify-content:center;gap:28px;align-items:center;padding:4px 0 8px">
+            <div style="width:36px;height:36px;border-radius:10px;overflow:hidden;border:2px solid var(--ink-10);background:#ddd">
+              <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=120&q=60" alt="" style="width:100%;height:100%;object-fit:cover" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.parentElement.style.display='none'">
+            </div>
+            <button class="scan-shutter" aria-label="Capture"></button>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--cream);color:var(--teal);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M12 4v16"/></svg>
+            </div>
+          </div>
+          <div style="font-size:10.5px;color:var(--ink-60);text-align:center;line-height:1.4">Works offline for common diseases · synced to your memory when you're back online.</div>
+        </div></div>
+        %%BNAV_ADVISORY%%
+      </div></div>
+      <div class="screen-caption">Camera frame · shutter CTA · gallery shortcut · explicit note that history is farmer-scoped.</div>
+    </div>
+
+    <!-- 9. SCAN RESULT · SAVE TO MEMORY -->
+    <div>
+      <div class="screen-label"><span class="num">09</span>Scan Result · Save to Memory</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Scan result
+        </div>
+        <div class="content"><div class="scroll">
+          <div class="diag-card">
+            <div class="diag-img">
+              <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=80" alt="Diseased coffee leaf" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+              <span class="conf">92% match</span>
+            </div>
+            <div class="diag-body">
+              <div class="tag-row">
+                <span class="chip orange">Disease</span>
+                <span class="chip teal">Coffee · Robusta</span>
+              </div>
+              <h3>Coffee leaf rust</h3>
+              <div class="crop-line">Hemileia vastatrix · common in Mpigi shaded plots</div>
+              <p>Yellowing on lower leaves with reddish-brown spots and a yellow halo — matches your photo and the current short-rains pattern in Nkozi.</p>
+              <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px">Suggested steps</div>
+              <ol class="diag-steps">
+                <li>Prune badly affected leaves and burn away from the garden.</li>
+                <li>Spray Mancozeb 80WP · 50g / 20L · every 10–14 days.</li>
+                <li>Open the canopy before the rains so new leaves dry faster.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="mem-save-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><path d="M12 3l7 3v5c0 5-3 9-7 11-4-2-7-6-7-11V6z"/></svg>
+            <div>
+              <div class="msn-t">Save to Nakato's AgroBot memory</div>
+              <div class="msn-s">Future replies will recall this rust case, your Robusta plot, and products you already use.</div>
+            </div>
+          </div>
+
+          <button class="btn primary" style="margin-bottom:8px">Save to my memory</button>
+          <button class="btn secondary" style="margin-bottom:8px">Customize how AgroBot explains this</button>
+          <button class="btn secondary" style="background:transparent;border:none;color:var(--teal);box-shadow:none;height:auto;padding:6px 0">Skip · don't remember this scan</button>
+
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button class="btn secondary" style="flex:1">Buy Mancozeb</button>
+            <button class="btn secondary" style="flex:1">Talk to expert</button>
+          </div>
+        </div></div>
+        %%BNAV_ADVISORY%%
+      </div></div>
+      <div class="screen-caption">Diagnosis + confidence · save-to-memory CTA · path to customize reply style · shop / talk fallbacks.</div>
+    </div>
+
+    <!-- 10. MY AGROBOT MEMORY -->
+    <div>
+      <div class="screen-label"><span class="num">10</span>My AgroBot Memory</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          My AgroBot memory
+        </div>
+        <div class="content"><div class="scroll">
+          <div class="mem-banner" style="margin-top:2px">
+            <div class="mb-ava">NN</div>
+            <div>
+              <div class="mb-t">Active for Nakato Nabirye</div>
+              <div class="mb-s">Mpigi · Nkozi · farmer account only</div>
+            </div>
+          </div>
+
+          <div class="prof-stats" style="margin-bottom:12px">
+            <div class="prof-stat"><div class="k">3</div><div class="kl">Scans saved</div></div>
+            <div class="prof-stat"><div class="k">4</div><div class="kl">Reply prefs</div></div>
+            <div class="prof-stat"><div class="k">On</div><div class="kl">Memory</div></div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:2px 0 8px">
+            <div style="font-size:12px;font-weight:700;color:var(--ink)">Crop scan history</div>
+            <span style="font-size:10.5px;color:var(--teal);font-weight:700">Newest first</span>
+          </div>
+
+          <div class="hist-row">
+            <div class="ht"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=200&q=70" alt="" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+            <div class="hi">
+              <div class="hn">Coffee leaf rust</div>
+              <div class="hs">Robusta · 92% match · Mancozeb advised</div>
+              <div class="hd">Just now · Nkozi plot</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="var(--ink-60)" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hist-row">
+            <div class="ht"><img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=200&q=70" alt="" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+            <div class="hi">
+              <div class="hn">Fall Armyworm</div>
+              <div class="hs">Maize · Rocket 44 EC · evening spray</div>
+              <div class="hd">12 Apr 2026 · Upper garden</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="var(--ink-60)" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hist-row">
+            <div class="ht"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=200&q=70" alt="" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+            <div class="hi">
+              <div class="hn">Healthy scan</div>
+              <div class="hs">Matooke · no disease detected</div>
+              <div class="hd">02 Apr 2026</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="var(--ink-60)" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+
+          <div style="font-size:12px;font-weight:700;color:var(--ink);margin:12px 0 8px">How AgroBot replies to you</div>
+          <div style="background:#fff;border:1px solid var(--ink-10);border-radius:12px;padding:12px;margin-bottom:12px">
+            <span class="pref-pill on">Luganda-first</span>
+            <span class="pref-pill on">Short steps</span>
+            <span class="pref-pill on">Prefer in-stock products</span>
+            <span class="pref-pill">Organic options · off</span>
+            <div style="font-size:10.5px;color:var(--teal);font-weight:700;margin-top:4px">Edit reply style ›</div>
+          </div>
+
+          <div class="set-list">
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <div class="lb"><div class="t">Scan another crop</div><div class="st">Add to your scan history</div></div>
+              <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16 3h5v5M8 3H3v5M3 16v5h5M16 21h5v-5M21 3l-7 7M3 21l7-7"/></svg></div>
+              <div class="lb"><div class="t">Switch / reset memory</div><div class="st">Clear history or start a fresh profile</div></div>
+              <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <p style="font-size:10.5px;color:var(--ink-60);text-align:center;margin:10px 0 0;line-height:1.45">Only you see this memory on your farmer account. Customize replies anytime — AgroBot uses them on WhatsApp and in-app.</p>
+        </div></div>
+        %%BNAV_ADVISORY%%
+      </div></div>
+      <div class="screen-caption">Farmer-scoped memory · scan history · reply prefs · switch/reset · private to this farmer account.</div>
+    </div>
+
+    <!-- 11. CUSTOMIZE RESPONSES -->
+    <div>
+      <div class="screen-label"><span class="num">11</span>Customize Responses</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Customize replies
+        </div>
+        <div class="content"><div class="scroll">
+          <p style="font-size:12px;color:var(--teal);margin:4px 0 12px;font-weight:500">Saved into Nakato's AgroBot memory. Other farmers keep their own settings.</p>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px">Language &amp; tone</div>
+          <div class="radio-row on">
+            <div class="flag">🇺🇬</div>
+            <div class="lbl"><div class="t">Luganda first, then English</div><div class="st">Best for Nakato's chats</div></div>
+            <div class="rd"></div>
+          </div>
+          <div class="radio-row">
+            <div class="flag">🇬🇧</div>
+            <div class="lbl"><div class="t">English only</div><div class="st">Technical product names stay English</div></div>
+            <div class="rd"></div>
+          </div>
+          <div class="radio-row">
+            <div class="flag">🗣️</div>
+            <div class="lbl"><div class="t">Mix freely</div><div class="st">Match whatever language I write in</div></div>
+            <div class="rd"></div>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px">Answer style</div>
+          <div class="set-list">
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+              <div class="lb"><div class="t">Short step-by-step</div><div class="st">3–5 bullets · no long essays</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7h18v10H3z"/><path d="M7 7V5h10v2"/></svg></div>
+              <div class="lb"><div class="t">Prefer products in stock near me</div><div class="st">Mpigi Town outlet first</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3C8 6 6 12 8 18c4-1 8-5 8-10a8 8 0 00-4-5z"/></svg></div>
+              <div class="lb"><div class="t">Offer organic / cultural options</div><div class="st">Before recommending chemicals</div></div>
+              <div class="toggle"></div>
+            </div>
+            <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v5c0 5-3 9-7 11-4-2-7-6-7-11V6z"/></svg></div>
+              <div class="lb"><div class="t">Use my scan history in answers</div><div class="st">Recall past diseases on my plots</div></div>
+              <div class="toggle on"></div>
+            </div>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px">Focus crops</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+            <span class="pill on">☕ Coffee</span>
+            <span class="pill on">🌽 Maize</span>
+            <span class="pill on">🍌 Matooke</span>
+            <span class="pill">🫘 Beans</span>
+            <span class="pill">🥑 Avocado</span>
+          </div>
+
+          <div style="background:#E4F3F5;border-radius:12px;padding:12px;margin-bottom:14px">
+            <div style="font-size:10.5px;font-weight:700;color:var(--teal);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px">Preview</div>
+            <div class="bubble" style="max-width:100%;margin:0">Nakato, ku coffee leaf rust eyo: 1) Saza amalagala · 2) Mancozeb 80WP 50g/20L · Mpigi stock ready. Need organic options too?</div>
+          </div>
+
+          <button class="btn primary">Save to my memory</button>
+          <p style="font-size:10.5px;color:var(--ink-60);text-align:center;margin:10px 0 0;line-height:1.45">You can clear or switch this memory anytime from My AgroBot memory.</p>
+        </div></div>
+        %%BNAV_ADVISORY%%
+      </div></div>
+      <div class="screen-caption">Language · answer-style toggles · focus crops · live preview · save writes into this farmer's memory only.</div>
+    </div>
+
+    <!-- 12. SWITCH / RESET MEMORY -->
+    <div>
+      <div class="screen-label"><span class="num">12</span>Switch / Reset Memory</div>
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>09:41</span><span>● ● ▮</span></div>
+        <div class="app-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#FFECD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Memory controls
+        </div>
+        <div class="content" style="position:relative">
+          <div class="scroll" style="opacity:.45;pointer-events:none">
+            <div class="mem-banner"><div class="mb-ava">NN</div><div><div class="mb-t">Active for Nakato Nabirye</div><div class="mb-s">3 scans · 4 reply prefs</div></div></div>
+            <div class="hist-row"><div class="ht" style="background:#ccc"></div><div class="hi"><div class="hn">Coffee leaf rust</div><div class="hs">Saved history</div></div></div>
+          </div>
+          <div class="dimmed-bg"></div>
+          <div class="sheet">
+            <div class="grip"></div>
+            <div class="ring" style="background:var(--rust)">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><path d="M9 12h6"/></svg>
+            </div>
+            <h3>Reset Nakato's AgroBot memory?</h3>
+            <div class="p">This clears scan history and reply preferences for <strong>this farmer only</strong>. Other farmers are untouched. You can also keep history and only reset reply style.</div>
+            <div style="display:flex;flex-direction:column;gap:8px;width:100%">
+              <button class="btn primary" style="background:var(--rust)">Clear all memory</button>
+              <button class="btn secondary">Reset reply style only</button>
+              <button class="btn secondary" style="background:transparent;border:none;color:var(--teal);box-shadow:none;height:auto;padding:6px 0">Cancel</button>
+            </div>
+          </div>
+        </div>
+        %%BNAV_ADVISORY%%
+      </div></div>
+      <div class="screen-caption">Per-farmer reset · clear all vs reply-style only · other accounts stay isolated.</div>
     </div>
 
   </div>
@@ -4157,6 +4601,11 @@
           <!-- App list -->
           <div class="set-list">
             <div class="set-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-5 4V7a1 1 0 011-1z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg></div>
+              <div class="lb"><div class="t">AgroBot Memory</div><div class="st">Scans · reply style · private to you</div></div>
+              <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="set-row">
               <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 1112 0v5l1 2H5z"/><path d="M10 20a2 2 0 004 0"/></svg></div>
               <div class="lb"><div class="t">Notifications</div></div>
               <span class="val">6 of 7 on</span>
@@ -4190,7 +4639,7 @@
         </div></div>
         %%BNAV_PROFILE%%
       </div></div>
-      <div class="screen-caption">Teal hero · quick stats · three grouped lists · destructive Log out at the bottom.</div>
+      <div class="screen-caption">Teal hero · quick stats · AgroBot Memory row (per-farmer scans &amp; reply style) · three grouped lists · destructive Log out at the bottom.</div>
     </div>
 
     <!-- 2. EDIT PROFILE -->
@@ -8641,6 +9090,8 @@
   tag('home-1', '.bell',                          'home-2');         // bell icon → notifications
   tag('home-1', '.avatar',                        'profile-1');      // avatar circle → profile
   tag('home-1', '.weather-card',                  'home-3');         // weather card → weather detail
+  tag('home-1', '.scan-home',                     'advisory-8');     // Scan my crop → camera
+  tag('home-1', '.mem-home-link',                 'advisory-10');    // My memory ›
   tag('home-1', '.tip-card',                      'home-4');         // seasonal tip → tip detail
   tag('home-1', '.quick-grid .quick', 'shop-1',     0);              // Shop inputs
   tag('home-1', '.quick-grid .quick', 'advisory-1', 1);              // Talk to an expert
@@ -8648,8 +9099,13 @@
   tag('home-1', '.quick-grid .quick', 'home-5',     3);              // Hire a tractor
   tag('home-1', '.trace-card .trace-input button','home-8');         // Trace button → result
 
-  // ---- Notifications (home-2) — back arrow handles return ----
-  // Tap any notification row → just stays for the prototype demo
+  // ---- Notifications (home-2) ----
+  if (screenMap['home-2']) {
+    screenMap['home-2'].querySelectorAll('.notif').forEach(row => {
+      const t = (row.querySelector('.title')?.textContent || '').toLowerCase();
+      if (t.includes('scan saved') || t.includes('memory')) row.setAttribute('data-proto-go', 'advisory-10');
+    });
+  }
 
   // ---- For Hire · Categories (home-5) ----
   tag('home-5', '.hire-cat',                      'home-6');         // any category → tractor providers list
@@ -8707,6 +9163,7 @@
   tag('advisory-1', '.adv-tile', 'advisory-7', 1);   // Ask AgroBot
   tag('advisory-1', '.adv-tile', 'advisory-6', 2);   // Must-Watch Videos
   tag('advisory-1', '.adv-tile', 'advisory-6', 3);   // Radio Recordings (same page as videos)
+  tag('advisory-1', '.mem-banner',                'advisory-10');  // Your AgroBot memory
   tag('advisory-1', '.tip-card',                  'advisory-2');   // Featured tip → expert directory
   tag('advisory-1', '.bell',                      'home-2');
   tag('advisory-1', '.avatar',                    'profile-1');
@@ -8733,8 +9190,58 @@
   // For the prototype, we leave them un-wired (so taps don't go anywhere unexpected).
   // Back arrow returns to advisory-1.
 
-  // ---- Ask AgroBot (advisory-7) ----
-  // Just an info screen. Back arrow returns to advisory-1.
+  // ---- Ask AgroBot hub (advisory-7) ----
+  tag('advisory-7', '.mem-banner',                'advisory-10');  // farmer memory banner → My memory
+  tag('advisory-7', '.bot-action', 'advisory-8', 0);               // Scan a crop
+  tag('advisory-7', '.bot-action', 'advisory-11', 1);              // Customize replies
+  // WhatsApp launcher stays (external)
+
+  // ---- Scan a crop (advisory-8) ----
+  tag('advisory-8', '.scan-shutter',              'advisory-9');   // shutter → diagnosis result
+
+  // ---- Scan result (advisory-9) ----
+  tag('advisory-9', '.btn.primary',               'advisory-10');  // Save to my memory → memory
+  // "Customize how AgroBot explains this" secondary → customize
+  if (screenMap['advisory-9']) {
+    const a9 = screenMap['advisory-9'];
+    a9.querySelectorAll('.btn.secondary').forEach(btn => {
+      const t = (btn.textContent || '').toLowerCase();
+      if (t.includes('customize')) btn.setAttribute('data-proto-go', 'advisory-11');
+      else if (t.includes('talk')) btn.setAttribute('data-proto-go', 'advisory-2');
+      else if (t.includes('buy')) btn.setAttribute('data-proto-go', 'shop-2');
+      else if (t.includes('skip')) btn.setAttribute('data-proto-go', 'advisory-7');
+    });
+  }
+
+  // ---- My AgroBot memory (advisory-10) ----
+  tag('advisory-10', '.hist-row',                 'advisory-9');   // reopen last diagnosis
+  if (screenMap['advisory-10']) {
+    const a10 = screenMap['advisory-10'];
+    // "Edit reply style ›" text link
+    a10.querySelectorAll('div').forEach(el => {
+      const t = (el.textContent || '').trim();
+      if (t === 'Edit reply style ›') el.setAttribute('data-proto-go', 'advisory-11');
+    });
+    a10.querySelectorAll('.set-row').forEach(row => {
+      const t = (row.textContent || '').toLowerCase();
+      if (t.includes('scan another')) row.setAttribute('data-proto-go', 'advisory-8');
+      else if (t.includes('switch') || t.includes('reset')) row.setAttribute('data-proto-go', 'advisory-12');
+    });
+  }
+
+  // ---- Customize responses (advisory-11) ----
+  tag('advisory-11', '.btn.primary',              'advisory-10');  // Save → back to memory
+
+  // ---- Switch / reset memory (advisory-12) ----
+  if (screenMap['advisory-12']) {
+    const a12 = screenMap['advisory-12'];
+    a12.querySelectorAll('.sheet .btn').forEach(btn => {
+      const t = (btn.textContent || '').toLowerCase();
+      if (t.includes('clear') || t.includes('reset reply') || t.includes('cancel')) {
+        btn.setAttribute('data-proto-go', 'advisory-10');
+      }
+    });
+  }
 
   // ====================== SELL MY PRODUCE TAB · precise selector wiring ======================
 
@@ -8774,6 +9281,8 @@
       if (t === 'edit profile')                   row.dataset.protoGo = 'profile-2';
       else if (t.includes('pickup') || t.includes('address'))
                                                   row.dataset.protoGo = 'profile-3';
+      else if (t.includes('agrobot') || t.includes('memory'))
+                                                  row.dataset.protoGo = 'advisory-10';
       else if (t === 'notifications')             row.dataset.protoGo = 'profile-4';
       else if (t === 'language')                  row.dataset.protoGo = 'profile-5';
       else if (t.includes('help'))                row.dataset.protoGo = 'profile-6';
