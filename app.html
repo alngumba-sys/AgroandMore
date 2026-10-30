@@ -465,6 +465,29 @@
   .quick .qn{font-size:12px;font-weight:700;color:var(--ink)}
   .quick .qd{font-size:10px;color:var(--ink-60);font-weight:500;line-height:1.3}
 
+  /* Farmer home · scan & memory strip */
+  .scan-home{
+    display:flex;gap:12px;align-items:center;padding:12px;
+    background:linear-gradient(135deg, #0D4751 0%, var(--teal) 100%);
+    border-radius:14px;margin-bottom:12px;color:#fff;cursor:pointer;
+  }
+  .scan-home .sh-ic{
+    width:44px;height:44px;border-radius:12px;background:rgba(255,236,209,.16);
+    color:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .scan-home .sh-t{font-family:'Poppins';font-weight:700;font-size:13.5px;line-height:1.2;margin:0 0 3px}
+  .scan-home .sh-s{font-size:10.5px;opacity:.88;font-weight:500;line-height:1.35}
+  .scan-home .sh-go{
+    margin-left:auto;flex-shrink:0;background:var(--orange);color:#fff;
+    border:none;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;
+    font-family:inherit;cursor:pointer;white-space:nowrap;
+  }
+  .mem-home-link{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:8px 2px 12px;font-size:11px;color:var(--teal);font-weight:600;
+  }
+  .mem-home-link span{color:var(--ink-60);font-weight:500}
+
   .tip-card{background:#fff;border:1px solid var(--ink-10);border-radius:14px;overflow:hidden;margin-bottom:14px}
   .tip-img{height:120px;background:linear-gradient(135deg,#4A7C4E 0%,#2D5A2F 100%);position:relative;overflow:hidden}
   .tip-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -2351,7 +2374,7 @@
 <section id="sec-home" class="tab-section">
   <div class="section-intro">
     <h2>Farmer · Home Tab (first bottom nav)</h2>
-    <p>Every screen a farmer (Nakato Nabirye · Mpigi) can reach from the Home bottom-nav tab after signing in: dashboard, notifications, weather detail, seasonal tip detail, For Hire flow (categories → providers → detail), and Trace My Produce result.</p>
+    <p>Every screen a farmer (Nakato Nabirye · Mpigi) can reach from the Home bottom-nav tab after signing in: dashboard with <strong>Scan my crop</strong> (saves into her AgroBot memory), notifications, weather detail, seasonal tip detail, For Hire flow (categories → providers → detail), and Trace My Produce result.</p>
   </div>
   <div class="grid">
 
@@ -2389,6 +2412,20 @@
               <div class="wx-day"><span class="d">THU</span><svg viewBox="0 0 24 24" fill="none" stroke="#FFECD1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14a4 4 0 110-8 5 5 0 019.9-1 4 4 0 011.1 7.9"/><path d="M9 18l-1 2M13 18l-1 2M17 18l-1 2"/></svg><span>23°</span></div>
             </div>
           </div>
+
+          <div class="scan-home">
+            <div class="sh-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <div class="sh-t">Scan my crop</div>
+              <div class="sh-s">Spot disease · save to your AgroBot memory</div>
+            </div>
+            <button class="sh-go" type="button">Scan</button>
+          </div>
+          <div class="mem-home-link">
+            <span>Last saved: coffee leaf rust · Nkozi</span>
+            <strong>My memory ›</strong>
+          </div>
+
           <div class="quick-grid">
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="qn">Shop inputs</div><div class="qd">Seeds, fertilizer, tools</div></div>
             <div class="quick"><div class="qi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="qn">Talk to an expert</div><div class="qd">Agronomist available</div></div>
@@ -2410,7 +2447,7 @@
         </div></div>
         %%BNAV_HOME%%
       </div></div>
-      <div class="screen-caption">Luganda greeting · Mpigi weather with rain advice · 4 quick actions · seasonal tip · trace shortcut.</div>
+      <div class="screen-caption">Luganda greeting · Mpigi weather · Scan my crop (saves to farmer memory) · My memory link · 4 quick actions · seasonal tip · trace.</div>
     </div>
 
     <!-- Notifications -->
@@ -2424,8 +2461,9 @@
           <div class="actions"><span style="font-size:11px;color:var(--cream);opacity:.7;font-weight:600">Mark all read</span></div>
         </div>
         <div class="content"><div class="scroll">
-          <div class="tabs"><div class="t on">All · 4</div><div class="t">Orders</div><div class="t">Advisory</div><div class="t">System</div></div>
-          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Order dispatched</div><div class="preview">Your order <strong>AM-2026-04-24-0137</strong> has left Mpigi Town outlet. Expected tomorrow.</div><div class="ts">Just now</div></div></div>
+          <div class="tabs"><div class="t on">All · 5</div><div class="t">Orders</div><div class="t">Advisory</div><div class="t">System</div></div>
+          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="nb"><div class="title">Scan saved to your memory</div><div class="preview">Coffee leaf rust on your Nkozi Robusta — AgroBot will remember this when you ask for advice.</div><div class="ts">Just now</div></div></div>
+          <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 16h3l2-4h6l2 4h3M6 16v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Order dispatched</div><div class="preview">Your order <strong>AM-2026-04-24-0137</strong> has left Mpigi Town outlet. Expected tomorrow.</div><div class="ts">12 min ago</div></div></div>
           <div class="notif unread"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 6 6 12 8 18c4-1 8-5 8-10a8 8 0 00-4-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">New seasonal tip</div><div class="preview">Controlling Fall Armyworm in maize — from Achieng Grace, Senior Agronomist.</div><div class="ts">2 hours ago</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0116 0M6 16h2l1 3H5l1-3zM16 16h2l1 3h-4l1-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="nb"><div class="title">Talk rated</div><div class="preview">Thanks for rating Okello James 5 ★ — your feedback helps other farmers.</div><div class="ts">Yesterday · 16:42</div></div></div>
           <div class="notif"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="nb"><div class="title">Weather alert · Mpigi</div><div class="preview">Heavy rain expected Wed–Thu. Harvest coffee before Tuesday if possible.</div><div class="ts">Yesterday · 06:00</div></div></div>
@@ -3316,7 +3354,7 @@
         </div>
         <div class="content"><div class="scroll">
           <h2 style="font-family:'Poppins';font-weight:800;font-size:20px;margin:4px 0 4px">How can we help?</h2>
-          <p style="font-size:12px;color:var(--teal);margin:0 0 14px;font-weight:500">Talk to a person, an AI assistant, or learn on your own.</p>
+          <p style="font-size:12px;color:var(--teal);margin:0 0 14px;font-weight:500">Talk to a person, scan a crop into your memory, or learn on your own.</p>
 
           <div class="adv-tiles">
             <div class="adv-tile">
@@ -3344,6 +3382,15 @@
             </div>
           </div>
 
+          <div class="mem-banner" style="margin-top:2px">
+            <div class="mb-ava">NN</div>
+            <div>
+              <div class="mb-t">Your AgroBot memory</div>
+              <div class="mb-s">3 scans saved · Luganda-first replies · private to you</div>
+            </div>
+            <span class="mb-link">Open ›</span>
+          </div>
+
           <div style="font-size:12px;font-weight:700;color:var(--ink);margin:6px 0 8px">FEATURED THIS WEEK</div>
           <div class="tip-card">
             <div class="tip-img">
@@ -3359,7 +3406,7 @@
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">4 entry tiles · AgroBot flagged 24/7 · featured tip surfaced below.</div>
+      <div class="screen-caption">4 entry tiles · farmer memory strip · AgroBot flagged 24/7 · featured tip below.</div>
     </div>
 
     <!-- 2. TALK TO EXPERT · DIRECTORY -->
@@ -3902,7 +3949,7 @@
           <div class="set-list">
             <div class="set-row">
               <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
-              <div class="lb"><div class="t">Scan another crop</div><div class="st">Add to this farmer's history</div></div>
+              <div class="lb"><div class="t">Scan another crop</div><div class="st">Add to your scan history</div></div>
               <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
             <div class="set-row">
@@ -3912,11 +3959,11 @@
             </div>
           </div>
 
-          <p style="font-size:10.5px;color:var(--ink-60);text-align:center;margin:10px 0 0;line-height:1.45">Agents ordering on behalf of a farmer load <em>that</em> farmer's memory — never their own.</p>
+          <p style="font-size:10.5px;color:var(--ink-60);text-align:center;margin:10px 0 0;line-height:1.45">Only you see this memory on your farmer account. Customize replies anytime — AgroBot uses them on WhatsApp and in-app.</p>
         </div></div>
         %%BNAV_ADVISORY%%
       </div></div>
-      <div class="screen-caption">Farmer-scoped memory · scan history · reply prefs summary · switch/reset entry · agent note.</div>
+      <div class="screen-caption">Farmer-scoped memory · scan history · reply prefs · switch/reset · private to this farmer account.</div>
     </div>
 
     <!-- 11. CUSTOMIZE RESPONSES -->
@@ -9043,6 +9090,8 @@
   tag('home-1', '.bell',                          'home-2');         // bell icon → notifications
   tag('home-1', '.avatar',                        'profile-1');      // avatar circle → profile
   tag('home-1', '.weather-card',                  'home-3');         // weather card → weather detail
+  tag('home-1', '.scan-home',                     'advisory-8');     // Scan my crop → camera
+  tag('home-1', '.mem-home-link',                 'advisory-10');    // My memory ›
   tag('home-1', '.tip-card',                      'home-4');         // seasonal tip → tip detail
   tag('home-1', '.quick-grid .quick', 'shop-1',     0);              // Shop inputs
   tag('home-1', '.quick-grid .quick', 'advisory-1', 1);              // Talk to an expert
@@ -9050,8 +9099,13 @@
   tag('home-1', '.quick-grid .quick', 'home-5',     3);              // Hire a tractor
   tag('home-1', '.trace-card .trace-input button','home-8');         // Trace button → result
 
-  // ---- Notifications (home-2) — back arrow handles return ----
-  // Tap any notification row → just stays for the prototype demo
+  // ---- Notifications (home-2) ----
+  if (screenMap['home-2']) {
+    screenMap['home-2'].querySelectorAll('.notif').forEach(row => {
+      const t = (row.querySelector('.title')?.textContent || '').toLowerCase();
+      if (t.includes('scan saved') || t.includes('memory')) row.setAttribute('data-proto-go', 'advisory-10');
+    });
+  }
 
   // ---- For Hire · Categories (home-5) ----
   tag('home-5', '.hire-cat',                      'home-6');         // any category → tractor providers list
@@ -9109,6 +9163,7 @@
   tag('advisory-1', '.adv-tile', 'advisory-7', 1);   // Ask AgroBot
   tag('advisory-1', '.adv-tile', 'advisory-6', 2);   // Must-Watch Videos
   tag('advisory-1', '.adv-tile', 'advisory-6', 3);   // Radio Recordings (same page as videos)
+  tag('advisory-1', '.mem-banner',                'advisory-10');  // Your AgroBot memory
   tag('advisory-1', '.tip-card',                  'advisory-2');   // Featured tip → expert directory
   tag('advisory-1', '.bell',                      'home-2');
   tag('advisory-1', '.avatar',                    'profile-1');
